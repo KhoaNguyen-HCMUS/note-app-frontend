@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
+import { FaPlus } from 'react-icons/fa';
+
 import NoteCard from '../components/common/noteCard.jsx';
 import TagFilter from '../components/common/tagFilter.jsx';
 import axiosClient from '../api/axiosClient';
 import EmptyNotes from '../components/common/emptyNotes';
+import AddNoteModal from '../components/common/addNoteModal';
 
 export default function NotesPage() {
   const [notes, setNotes] = useState([]);
   const [tagFilter, setTagFilter] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -36,6 +40,16 @@ export default function NotesPage() {
       });
   }, []);
 
+  const handleAddNote = async (noteData) => {
+    try {
+      console.log('Adding note:', noteData);
+      const response = await axiosClient.post('/notes', noteData);
+      setNotes([...notes, response.data]);
+      setShowModal(false);
+    } catch (err) {
+      console.error('Error adding note:', err);
+    }
+  };
   // Ensure we're working with arrays
   const filteredNotes = tagFilter ? (notes || []).filter((note) => note.tags.includes(tagFilter)) : notes || [];
 
@@ -47,7 +61,13 @@ export default function NotesPage() {
   }, []);
   return (
     <div className='container mt-4'>
-      <h2>All Notes</h2>
+      <div className='d-flex justify-content-between align-items-center mb-4'>
+        <h2>All Notes</h2>
+        <button className='btn btn-primary d-flex align-items-center gap-2' onClick={() => setShowModal(true)}>
+          <FaPlus /> Thêm ghi chú
+        </button>
+      </div>
+      <AddNoteModal show={showModal} onClose={() => setShowModal(false)} onSubmit={handleAddNote} />
       <TagFilter tags={allTags} selectedTag={tagFilter} onSelectTag={setTagFilter} />{' '}
       <div className='row'>
         {filteredNotes.length > 0 ? (
