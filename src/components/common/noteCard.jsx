@@ -44,10 +44,10 @@ export default function NoteCard({ note, onUpdate }) {
               onClick={() => navigate(`/notes/edit/${note._id}`)}
               disabled={isDeleting}
             >
-              Sửa
+              Edit
             </button>
             <button className='btn btn-sm btn-outline-danger' onClick={handleDelete} disabled={isDeleting}>
-              Xoá
+              Delete
             </button>
           </div>
         </div>
