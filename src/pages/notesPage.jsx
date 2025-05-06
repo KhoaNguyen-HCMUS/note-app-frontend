@@ -14,42 +14,41 @@ export default function NotesPage() {
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
+  const fetchNotes = async () => {
     setLoading(true);
-    axiosClient
-      .get('/notes')
-      .then((res) => {
-        console.log('API Response:', res.data);
-        const notesData = res.data?.data || res.data;
-
-        if (Array.isArray(notesData)) {
-          setNotes(notesData);
-        } else {
-          console.error('Invalid data format:', notesData);
-          setNotes([]);
-          setError('Invalid data format received');
-        }
-      })
-      .catch((err) => {
-        console.error('Error fetching notes:', err.response?.data || err.message);
-        setError('Failed to load notes');
+    try {
+      const res = await axiosClient.get('/notes');
+      const notesData = res.data?.data || res.data;
+      if (Array.isArray(notesData)) {
+        setNotes(notesData);
+      } else {
         setNotes([]);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+        setError('Invalid data format received');
+      }
+    } catch (err) {
+      console.error('Error fetching notes:', err);
+      setError('Failed to load notes');
+      setNotes([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchNotes();
   }, []);
 
   const handleAddNote = async (noteData) => {
     try {
-      console.log('Adding note:', noteData);
       const response = await axiosClient.post('/notes', noteData);
       setNotes([...notes, response.data]);
       setShowModal(false);
+      await fetchNotes();
     } catch (err) {
       console.error('Error adding note:', err);
     }
   };
+
   // Ensure we're working with arrays
   const filteredNotes = tagFilter ? (notes || []).filter((note) => note.tags.includes(tagFilter)) : notes || [];
 
@@ -71,7 +70,7 @@ export default function NotesPage() {
       <TagFilter tags={allTags} selectedTag={tagFilter} onSelectTag={setTagFilter} />{' '}
       <div className='row'>
         {filteredNotes.length > 0 ? (
-          filteredNotes.map((note) => <NoteCard key={note._id} note={note} />)
+          filteredNotes.map((note) => <NoteCard key={note._id} note={note} onUpdate={fetchNotes} />)
         ) : (
           <EmptyNotes />
         )}
