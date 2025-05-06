@@ -1,4 +1,9 @@
-export default function TagFilter({ tags, selectedTag, onSelectTag }) {
+import PropTypes from 'prop-types';
+
+export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }) {
+  // Extract unique tags from notes array
+  const uniqueTags = [...new Set(tags)];
+
   return (
     <div className='mb-4'>
       <h6>Lọc theo Tag:</h6>
@@ -9,7 +14,7 @@ export default function TagFilter({ tags, selectedTag, onSelectTag }) {
         >
           Tất cả
         </button>
-        {tags.map((tag) => (
+        {uniqueTags.map((tag) => (
           <button
             key={tag}
             className={`btn btn-sm ${selectedTag === tag ? 'btn-primary' : 'btn-outline-primary'}`}
@@ -22,3 +27,14 @@ export default function TagFilter({ tags, selectedTag, onSelectTag }) {
     </div>
   );
 }
+
+TagFilter.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string),
+  selectedTag: PropTypes.string,
+  onSelectTag: PropTypes.func.isRequired,
+};
+
+TagFilter.defaultProps = {
+  tags: [],
+  selectedTag: null,
+};
