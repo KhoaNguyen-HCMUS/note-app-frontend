@@ -29,7 +29,7 @@ export default function LoginPage() {
               <div className='card-body p-5'>
                 <h2 className='text-center mb-4 text-primary'>
                   <FaSignInAlt className='me-2' />
-                  Đăng nhập
+                  Log in
                 </h2>
 
                 {error && (
@@ -63,7 +63,7 @@ export default function LoginPage() {
                       <input
                         type='password'
                         className='form-control bg-light'
-                        placeholder='Mật khẩu'
+                        placeholder='Password'
                         value={form.password}
                         onChange={(e) => setForm({ ...form, password: e.target.value })}
                         required
@@ -75,7 +75,7 @@ export default function LoginPage() {
                     type='submit'
                     className='btn btn-primary w-100 py-2 mb-3 d-flex align-items-center justify-content-center gap-2'
                   >
-                    Đăng nhập
+                    Log in
                   </button>
                 </form>
               </div>

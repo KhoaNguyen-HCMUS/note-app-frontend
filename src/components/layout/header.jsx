@@ -23,7 +23,7 @@ export default function Header() {
               <FaUser /> Profile
             </button>
             <button className='btn btn-outline-danger d-flex align-items-center gap-2' onClick={handleLogout}>
-              <FaSignOutAlt /> Đăng xuất
+              <FaSignOutAlt /> Log out
             </button>
           </div>
         </div>

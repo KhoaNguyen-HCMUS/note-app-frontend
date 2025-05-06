@@ -1,18 +1,17 @@
 import PropTypes from 'prop-types';
 
 export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }) {
-  // Extract unique tags from notes array
   const uniqueTags = [...new Set(tags)];
 
   return (
     <div className='mb-4'>
-      <h6>Lọc theo Tag:</h6>
+      <h6>Filter by Tag:</h6>
       <div className='d-flex flex-wrap gap-2'>
         <button
           className={`btn btn-sm ${selectedTag === null ? 'btn-primary' : 'btn-outline-primary'}`}
           onClick={() => onSelectTag(null)}
         >
-          Tất cả
+          All
         </button>
         {uniqueTags.map((tag) => (
           <button

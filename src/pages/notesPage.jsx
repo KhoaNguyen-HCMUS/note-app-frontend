@@ -49,7 +49,6 @@ export default function NotesPage() {
     }
   };
 
-  // Ensure we're working with arrays
   const filteredNotes = tagFilter ? (notes || []).filter((note) => note.tags.includes(tagFilter)) : notes || [];
 
   if (loading) return <div className='container mt-4'>Loading...</div>;
@@ -63,7 +62,7 @@ export default function NotesPage() {
       <div className='d-flex justify-content-between align-items-center mb-4'>
         <h2>All Notes</h2>
         <button className='btn btn-primary d-flex align-items-center gap-2' onClick={() => setShowModal(true)}>
-          <FaPlus /> Thêm ghi chú
+          <FaPlus /> Add Note
         </button>
       </div>
       <AddNoteModal show={showModal} onClose={() => setShowModal(false)} onSubmit={handleAddNote} />
