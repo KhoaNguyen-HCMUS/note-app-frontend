@@ -4,7 +4,7 @@ import Footer from './footer.jsx';
 
 export default function Layout({ children }) {
   const location = useLocation();
-  const isAuthPage = ['/', '/register'].includes(location.pathname);
+  const isAuthPage = ['/login', '/register'].includes(location.pathname);
 
   return (
     <div className='d-flex flex-column min-vh-100'>

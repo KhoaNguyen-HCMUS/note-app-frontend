@@ -1,11 +1,11 @@
-// App.jsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/loginPage';
 // import RegisterPage from './pages/RegisterPage';
 import NotesPage from './pages/notesPage';
 // import EditNotePage from './pages/EditNotePage';
 import { AuthProvider } from './context/authContext';
 import Layout from './components/layout/layout';
+import PrivateRoute from './components/privateRoute';
 
 function App() {
   return (
@@ -13,10 +13,16 @@ function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path='/' element={<LoginPage />} />
-            {/* <Route path='/register' element={<RegisterPage />} /> */}
-            <Route path='/notes' element={<NotesPage />} />
-            {/* <Route path='/notes/edit/:id?' element={<EditNotePage />} /> */}
+            <Route path='/login' element={<LoginPage />} />
+            <Route
+              path='/notes'
+              element={
+                <PrivateRoute>
+                  <NotesPage />
+                </PrivateRoute>
+              }
+            />
+            <Route path='/' element={<Navigate to='/login' replace />} />
           </Routes>
         </Layout>
       </BrowserRouter>
