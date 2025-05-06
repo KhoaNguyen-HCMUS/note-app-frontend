@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/loginPage';
 // import RegisterPage from './pages/RegisterPage';
 import NotesPage from './pages/notesPage';
-// import EditNotePage from './pages/EditNotePage';
 import { AuthProvider } from './context/authContext';
 import Layout from './components/layout/layout';
 import PrivateRoute from './components/privateRoute';

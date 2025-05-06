@@ -6,6 +6,7 @@ import TagFilter from '../components/common/tagFilter.jsx';
 import axiosClient from '../api/axiosClient';
 import EmptyNotes from '../components/common/emptyNotes';
 import AddNoteModal from '../components/common/addNoteModal';
+import EditNoteModal from '../components/common/editNoteModal';
 
 export default function NotesPage() {
   const [notes, setNotes] = useState([]);
@@ -13,6 +14,9 @@ export default function NotesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  const [selectedNote, setSelectedNote] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const fetchNotes = async () => {
     setLoading(true);
@@ -49,6 +53,22 @@ export default function NotesPage() {
     }
   };
 
+  const handleEditClick = (note) => {
+    setSelectedNote(note);
+    setShowEditModal(true);
+  };
+
+  const handleEditSubmit = async (updatedNote) => {
+    try {
+      await axiosClient.put(`/notes/${selectedNote._id}`, updatedNote);
+      await fetchNotes(); // Refresh notes list
+      setShowEditModal(false);
+      setSelectedNote(null);
+    } catch (err) {
+      console.error('Error updating note:', err);
+    }
+  };
+
   const filteredNotes = tagFilter ? (notes || []).filter((note) => note.tags.includes(tagFilter)) : notes || [];
 
   if (loading) return <div className='container mt-4'>Loading...</div>;
@@ -66,10 +86,21 @@ export default function NotesPage() {
         </button>
       </div>
       <AddNoteModal show={showModal} onClose={() => setShowModal(false)} onSubmit={handleAddNote} />
+      <EditNoteModal
+        show={showEditModal}
+        onClose={() => {
+          setShowEditModal(false);
+          setSelectedNote(null);
+        }}
+        note={selectedNote}
+        onSubmit={handleEditSubmit}
+      />
       <TagFilter tags={allTags} selectedTag={tagFilter} onSelectTag={setTagFilter} />{' '}
       <div className='row'>
         {filteredNotes.length > 0 ? (
-          filteredNotes.map((note) => <NoteCard key={note._id} note={note} onUpdate={fetchNotes} />)
+          filteredNotes.map((note) => (
+            <NoteCard key={note._id} note={note} onUpdate={fetchNotes} onEdit={() => handleEditClick(note)} />
+          ))
         ) : (
           <EmptyNotes />
         )}

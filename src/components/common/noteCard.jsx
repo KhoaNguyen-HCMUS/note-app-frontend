@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import axiosClient from '../../api/axiosClient';
-import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-export default function NoteCard({ note, onUpdate }) {
-  const navigate = useNavigate();
+export default function NoteCard({ note, onUpdate, onEdit }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = async () => {
@@ -39,11 +36,7 @@ export default function NoteCard({ note, onUpdate }) {
           </div>
 
           <div className='d-flex justify-content-between'>
-            <button
-              className='btn btn-sm btn-outline-primary'
-              onClick={() => navigate(`/notes/edit/${note._id}`)}
-              disabled={isDeleting}
-            >
+            <button className='btn btn-sm btn-outline-primary' onClick={() => onEdit(note)} disabled={isDeleting}>
               Edit
             </button>
             <button className='btn btn-sm btn-outline-danger' onClick={handleDelete} disabled={isDeleting}>
