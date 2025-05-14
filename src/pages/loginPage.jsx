@@ -27,7 +27,7 @@ export default function LoginPage() {
       <div className='max-w-md w-full'>
         <div className='bg-white rounded-lg shadow-xl p-8'>
           <div className='mb-8 text-center'>
-            <h2 className='flex items-center justify-center text-2xl font-bold text-blue-600'>
+            <h2 className='flex items-center justify-center text-2xl font-bold text-primary'>
               <FaSignInAlt className='mr-2' />
               Log in
             </h2>
