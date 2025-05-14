@@ -12,7 +12,9 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       const res = await axiosClient.post('/auth/login', form);
+      console.log('Login response:', res);
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('username', res.data.user.username);
       navigate('/notes');
     } catch (error) {
       setError('Đăng nhập thất bại');

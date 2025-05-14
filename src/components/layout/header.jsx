@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const navigate = useNavigate();
-
+  const userName = localStorage.getItem('username') || 'User';
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
     navigate('/login');
   };
 
@@ -19,12 +20,10 @@ export default function Header() {
           </div>
 
           <div className='flex items-center space-x-4'>
-            <button
-              className='cursor-pointer flex items-center gap-2 px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors'
-              onClick={() => navigate('/profile')}
-            >
-              <FaUser /> Profile
-            </button>
+            <div className='flex items-center gap-2'>
+              <FaUser className='text-gray-600' size={20} />
+              <span className='text-gray-600'>{userName}</span>
+            </div>
             <button
               className='cursor-pointer flex items-center gap-2 px-4 py-2 border border-red-500 text-red-500 hover:bg-red-50 rounded-lg transition-colors'
               onClick={handleLogout}
