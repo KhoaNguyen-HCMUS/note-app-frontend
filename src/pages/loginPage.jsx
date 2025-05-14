@@ -72,6 +72,18 @@ export default function LoginPage() {
               </div>
             </div>
 
+            <div className='flex items-center justify-between'>
+              <p className='text-center text-gray-600'>
+                You don't have an account?{' '}
+                <button
+                  type='button'
+                  onClick={() => navigate('/register')}
+                  className='cursor-pointer text-blue-600 hover:text-blue-700'
+                >
+                  Register.
+                </button>
+              </p>
+            </div>
             <button
               type='submit'
               className='cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors'

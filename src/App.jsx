@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/loginPage';
-// import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/registerPage';
 import NotesPage from './pages/notesPage';
 import { AuthProvider } from './context/authContext';
 import Layout from './components/layout/layout';
@@ -13,6 +13,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
             <Route
               path='/notes'
               element={
