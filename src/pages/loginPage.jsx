@@ -7,9 +7,11 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await axiosClient.post('/auth/login', form);
       console.log('Login response:', res);
@@ -19,6 +21,8 @@ export default function LoginPage() {
     } catch (error) {
       setError('Đăng nhập thất bại');
       console.error('Login error:', error.response?.data?.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -78,7 +82,8 @@ export default function LoginPage() {
                 <button
                   type='button'
                   onClick={() => navigate('/register')}
-                  className='cursor-pointer text-blue-600 hover:text-blue-700'
+                  className='cursor-pointer text-blue-600 hover:text-blue-700 disabled:text-gray-400 disabled:cursor-not-allowed'
+                  disabled={loading}
                 >
                   Register.
                 </button>
@@ -86,7 +91,8 @@ export default function LoginPage() {
             </div>
             <button
               type='submit'
-              className='cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors'
+              className='cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed'
+              disabled={loading}
             >
               <FaSignInAlt />
               Log in
