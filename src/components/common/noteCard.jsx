@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axiosClient from '../../api/axiosClient';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 export default function NoteCard({ note, onUpdate, onEdit }) {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -21,28 +22,36 @@ export default function NoteCard({ note, onUpdate, onEdit }) {
   };
 
   return (
-    <div className='col-md-4 mb-4'>
-      <div className='card h-100 shadow-sm'>
-        <div className='card-body d-flex flex-column'>
-          <h5 className='card-title'>{note.title}</h5>
-          <p className='card-text flex-grow-1'>{note.content}</p>
+    <div className='w-full bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'>
+      <div className='p-6 flex flex-col h-full'>
+        <h5 className='text-xl font-semibold text-gray-800 mb-3'>{note.title}</h5>
+        <p className='text-gray-600 flex-grow mb-4'>{note.content}</p>
 
-          <div className='mb-2'>
-            {note.tags.map((tag) => (
-              <span key={tag} className='badge bg-secondary me-1'>
-                {tag}
-              </span>
-            ))}
-          </div>
+        <div className='space-x-2 mb-4'>
+          {note.tags.map((tag) => (
+            <span key={tag} className='inline-block px-2 py-1 text-sm text-gray-600 bg-gray-100 rounded-full'>
+              #{tag}
+            </span>
+          ))}
+        </div>
 
-          <div className='d-flex justify-content-between'>
-            <button className='btn btn-sm btn-outline-primary' onClick={() => onEdit(note)} disabled={isDeleting}>
-              Edit
-            </button>
-            <button className='btn btn-sm btn-outline-danger' onClick={handleDelete} disabled={isDeleting}>
-              Delete
-            </button>
-          </div>
+        <div className='flex justify-between items-center pt-4 border-t'>
+          <button
+            className='cursor-pointer flex items-center px-3 py-1.5 text-blue-600 border border-blue-600 rounded hover:bg-blue-50 transition-colors disabled:opacity-50'
+            onClick={() => onEdit(note)}
+            disabled={isDeleting}
+          >
+            <FaEdit className='mr-1' />
+            Edit
+          </button>
+          <button
+            className='cursor-pointer flex items-center px-3 py-1.5 text-red-600 border border-red-600 rounded hover:bg-red-50 transition-colors disabled:opacity-50'
+            onClick={handleDelete}
+            disabled={isDeleting}
+          >
+            <FaTrash className='mr-1' />
+            Delete
+          </button>
         </div>
       </div>
     </div>

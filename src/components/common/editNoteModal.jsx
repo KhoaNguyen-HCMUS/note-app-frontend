@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { FaSave, FaHeading, FaAlignLeft, FaHashtag } from 'react-icons/fa';
+import { FaSave, FaHeading, FaAlignLeft, FaHashtag, FaTimes } from 'react-icons/fa';
 
 export default function EditNoteModal({ show, onClose, note, onSubmit }) {
   const [form, setForm] = useState({
@@ -39,75 +39,93 @@ export default function EditNoteModal({ show, onClose, note, onSubmit }) {
 
   return (
     <>
-      <div className='modal fade show' style={{ display: 'block' }} tabIndex='-1' role='dialog'>
-        <div className='modal-dialog modal-lg modal-dialog-centered'>
-          <div className='modal-content border-0 shadow'>
-            <div className='modal-header bg-primary text-white'>
-              <h5 className='modal-title d-flex align-items-center'>
-                <FaHeading className='me-2' /> Chỉnh sửa ghi chú
-              </h5>
-              <button type='button' className='btn-close btn-close-white' onClick={onClose}></button>
+      <div className='text-black fixed inset-0 z-50 flex items-center justify-center p-4'>
+        <div className='fixed inset-0 bg-opacity-50' onClick={onClose}></div>
+
+        <div className='relative w-full max-w-2xl bg-white rounded-lg shadow-xl'>
+          {/* Header */}
+          <div className='flex items-center justify-between px-6 py-4 bg-blue-600 rounded-t-lg'>
+            <h5 className='flex items-center text-xl font-semibold text-white'>
+              <FaHeading className='mr-2' /> Chỉnh sửa ghi chú
+            </h5>
+            <button
+              onClick={onClose}
+              className='cursor-pointer text-white hover:text-gray-200 transition-colors'
+              aria-label='Close'
+            >
+              <FaTimes className='text-xl' />
+            </button>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className='bg-gray-50'>
+            <div className='p-6 space-y-6'>
+              {/* Title Input */}
+              <div>
+                <label className='flex items-center text-gray-700 mb-2'>
+                  <FaHeading className='mr-2 text-blue-600' />
+                  <span>Tiêu đề</span>
+                </label>
+                <input
+                  type='text'
+                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+                  value={form.title}
+                  onChange={(e) => setForm({ ...form, title: e.target.value })}
+                  required
+                />
+              </div>
+
+              {/* Content Textarea */}
+              <div>
+                <label className='flex items-center text-gray-700 mb-2'>
+                  <FaAlignLeft className='mr-2 text-blue-600' />
+                  <span>Nội dung</span>
+                </label>
+                <textarea
+                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+                  rows='6'
+                  value={form.content}
+                  onChange={(e) => setForm({ ...form, content: e.target.value })}
+                  required
+                ></textarea>
+              </div>
+
+              {/* Tags Input */}
+              <div>
+                <label className='flex items-center text-gray-700 mb-2'>
+                  <FaHashtag className='mr-2 text-blue-600' />
+                  <span>Tags</span>
+                </label>
+                <input
+                  type='text'
+                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+                  value={form.tags}
+                  onChange={(e) => setForm({ ...form, tags: e.target.value })}
+                  placeholder='Nhập tags, phân cách bằng dấu phẩy'
+                />
+                <small className='text-gray-500 mt-1 block'>Ví dụ: công việc, cá nhân, quan trọng</small>
+              </div>
             </div>
 
-            <form onSubmit={handleSubmit}>
-              <div className='modal-body bg-light p-4'>
-                <div className='mb-4'>
-                  <label className='form-label d-flex align-items-center'>
-                    <FaHeading className='me-2 text-primary' />
-                    <span>Tiêu đề</span>
-                  </label>
-                  <input
-                    type='text'
-                    className='form-control form-control-lg shadow-sm'
-                    value={form.title}
-                    onChange={(e) => setForm({ ...form, title: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <div className='mb-4'>
-                  <label className='form-label d-flex align-items-center'>
-                    <FaAlignLeft className='me-2 text-primary' />
-                    <span>Nội dung</span>
-                  </label>
-                  <textarea
-                    className='form-control shadow-sm'
-                    rows='6'
-                    value={form.content}
-                    onChange={(e) => setForm({ ...form, content: e.target.value })}
-                    required
-                  ></textarea>
-                </div>
-
-                <div className='mb-3'>
-                  <label className='form-label d-flex align-items-center'>
-                    <FaHashtag className='me-2 text-primary' />
-                    <span>Tags</span>
-                  </label>
-                  <input
-                    type='text'
-                    className='form-control shadow-sm'
-                    value={form.tags}
-                    onChange={(e) => setForm({ ...form, tags: e.target.value })}
-                    placeholder='Nhập tags, phân cách bằng dấu phẩy'
-                  />
-                  <small className='text-muted mt-1 d-block'>Ví dụ: công việc, cá nhân, quan trọng</small>
-                </div>
-              </div>
-
-              <div className='modal-footer bg-light'>
-                <button type='button' className='btn btn-outline-secondary' onClick={onClose}>
-                  Hủy
-                </button>
-                <button type='submit' className='btn btn-primary d-flex align-items-center gap-2'>
-                  <FaSave /> Lưu thay đổi
-                </button>
-              </div>
-            </form>
-          </div>
+            {/* Footer */}
+            <div className='flex items-center justify-end px-6 py-4 bg-gray-100 border-t rounded-b-lg space-x-4'>
+              <button
+                type='button'
+                className='cursor-pointer flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors'
+                onClick={onClose}
+              >
+                <FaTimes className='mr-2' /> Hủy
+              </button>
+              <button
+                type='submit'
+                className='cursor-pointer flex items-center px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors'
+              >
+                <FaSave className='mr-2' /> Lưu thay đổi
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      <div className='modal-backdrop fade show'></div>
     </>
   );
 }

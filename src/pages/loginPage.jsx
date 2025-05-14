@@ -21,66 +21,63 @@ export default function LoginPage() {
   };
 
   return (
-    <div className='container-fluid bg-light min-vh-100 d-flex align-items-center'>
-      <div className='container'>
-        <div className='row justify-content-center'>
-          <div className='col-md-6 col-lg-4'>
-            <div className='card shadow-lg border-0'>
-              <div className='card-body p-5'>
-                <h2 className='text-center mb-4 text-primary'>
-                  <FaSignInAlt className='me-2' />
-                  Log in
-                </h2>
+    <div className='min-h-screen bg-gray-100 flex items-center justify-center px-4'>
+      <div className='max-w-md w-full'>
+        <div className='bg-white rounded-lg shadow-xl p-8'>
+          <div className='mb-8 text-center'>
+            <h2 className='flex items-center justify-center text-2xl font-bold text-blue-600'>
+              <FaSignInAlt className='mr-2' />
+              Log in
+            </h2>
+          </div>
 
-                {error && (
-                  <div className='alert alert-danger d-flex align-items-center' role='alert'>
-                    <FaLock className='me-2' /> {error}
-                  </div>
-                )}
+          {error && (
+            <div className='mb-4 flex items-center bg-red-100 text-red-700 p-4 rounded-lg'>
+              <FaLock className='mr-2' /> {error}
+            </div>
+          )}
 
-                <form onSubmit={handleLogin}>
-                  <div className='mb-3'>
-                    <div className='input-group'>
-                      <span className='input-group-text bg-light'>
-                        <FaEnvelope className='text-primary' />
-                      </span>
-                      <input
-                        type='email'
-                        className='form-control bg-light'
-                        placeholder='Email'
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className='mb-4'>
-                    <div className='input-group'>
-                      <span className='input-group-text bg-light'>
-                        <FaLock className='text-primary' />
-                      </span>
-                      <input
-                        type='password'
-                        className='form-control bg-light'
-                        placeholder='Password'
-                        value={form.password}
-                        onChange={(e) => setForm({ ...form, password: e.target.value })}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    type='submit'
-                    className='btn btn-primary w-100 py-2 mb-3 d-flex align-items-center justify-content-center gap-2'
-                  >
-                    Log in
-                  </button>
-                </form>
+          <form onSubmit={handleLogin} className='space-y-6'>
+            <div>
+              <div className='relative'>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600'>
+                  <FaEnvelope />
+                </span>
+                <input
+                  type='email'
+                  className='w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500'
+                  placeholder='Email'
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  required
+                />
               </div>
             </div>
-          </div>
+
+            <div>
+              <div className='relative'>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600'>
+                  <FaLock />
+                </span>
+                <input
+                  type='password'
+                  className='w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white text-black focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500'
+                  placeholder='Password'
+                  value={form.password}
+                  onChange={(e) => setForm({ ...form, password: e.target.value })}
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              type='submit'
+              className='cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors'
+            >
+              <FaSignInAlt />
+              Log in
+            </button>
+          </form>
         </div>
       </div>
     </div>

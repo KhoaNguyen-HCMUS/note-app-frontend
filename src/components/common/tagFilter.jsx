@@ -5,10 +5,13 @@ export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }
 
   return (
     <div className='mb-4'>
-      <h6>Filter by Tag:</h6>
-      <div className='d-flex flex-wrap gap-2'>
+      <h6 className='text-lg font-semibold text-gray-700 mb-3'>Filter by Tag:</h6>
+      <div className='flex flex-wrap gap-2'>
         <button
-          className={`btn btn-sm ${selectedTag === null ? 'btn-primary' : 'btn-outline-primary'}`}
+          className={`cursor-pointer px-3 py-1.5 text-sm rounded-full transition-colors
+            ${
+              selectedTag === null ? 'bg-blue-600 text-white' : 'border border-blue-600 text-blue-600 hover:bg-blue-50'
+            }`}
           onClick={() => onSelectTag(null)}
         >
           All
@@ -16,7 +19,10 @@ export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }
         {uniqueTags.map((tag) => (
           <button
             key={tag}
-            className={`btn btn-sm ${selectedTag === tag ? 'btn-primary' : 'btn-outline-primary'}`}
+            className={`cursor-pointer px-3 py-1.5 text-sm rounded-full transition-colors
+              ${
+                selectedTag === tag ? 'bg-blue-600 text-white' : 'border border-blue-600 text-blue-600 hover:bg-blue-50'
+              }`}
             onClick={() => onSelectTag(tag)}
           >
             {tag}

@@ -78,14 +78,19 @@ export default function NotesPage() {
     return tags.concat(note.tags || []);
   }, []);
   return (
-    <div className='container mt-4'>
-      <div className='d-flex justify-content-between align-items-center mb-4'>
-        <h2>All Notes</h2>
-        <button className='btn btn-primary d-flex align-items-center gap-2' onClick={() => setShowModal(true)}>
-          <FaPlus /> Add Note
+    <div className='container mx-auto px-4 py-8'>
+      <div className='flex justify-between items-center mb-6'>
+        <h2 className='text-2xl font-bold text-gray-800'>All Notes</h2>
+        <button
+          className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
+          onClick={() => setShowModal(true)}
+        >
+          <FaPlus className='text-sm' /> Add Note
         </button>
       </div>
+
       <AddNoteModal show={showModal} onClose={() => setShowModal(false)} onSubmit={handleAddNote} />
+
       <EditNoteModal
         show={showEditModal}
         onClose={() => {
@@ -95,8 +100,12 @@ export default function NotesPage() {
         note={selectedNote}
         onSubmit={handleEditSubmit}
       />
-      <TagFilter tags={allTags} selectedTag={tagFilter} onSelectTag={setTagFilter} />{' '}
-      <div className='row'>
+
+      <div className='mb-6'>
+        <TagFilter tags={allTags} selectedTag={tagFilter} onSelectTag={setTagFilter} />
+      </div>
+
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         {filteredNotes.length > 0 ? (
           filteredNotes.map((note) => (
             <NoteCard key={note._id} note={note} onUpdate={fetchNotes} onEdit={() => handleEditClick(note)} />

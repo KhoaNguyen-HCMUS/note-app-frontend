@@ -11,18 +11,24 @@ export default function Header() {
 
   return (
     <header className='bg-white shadow-sm'>
-      <div className='container'>
-        <div className='d-flex justify-content-between align-items-center py-3'>
-          <div className='d-flex align-items-center'>
-            <FaStickyNote className='text-primary me-2' size={24} />
-            <h1 className='h4 mb-0'>Note App</h1>
+      <div className='container mx-auto px-4'>
+        <div className='flex justify-between items-center py-3'>
+          <div className='flex items-center'>
+            <FaStickyNote className='text-blue-600 mr-2' size={24} />
+            <h1 className='text-xl font-semibold'>Note App</h1>
           </div>
 
-          <div className='d-flex align-items-center gap-3'>
-            <button className='btn btn-light d-flex align-items-center gap-2' onClick={() => navigate('/profile')}>
+          <div className='flex items-center space-x-4'>
+            <button
+              className='cursor-pointer flex items-center gap-2 px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors'
+              onClick={() => navigate('/profile')}
+            >
               <FaUser /> Profile
             </button>
-            <button className='btn btn-outline-danger d-flex align-items-center gap-2' onClick={handleLogout}>
+            <button
+              className='cursor-pointer flex items-center gap-2 px-4 py-2 border border-red-500 text-red-500 hover:bg-red-50 rounded-lg transition-colors'
+              onClick={handleLogout}
+            >
               <FaSignOutAlt /> Log out
             </button>
           </div>
