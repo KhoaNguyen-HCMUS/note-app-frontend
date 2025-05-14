@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: blue;
+  --color-primary: #082f49;
+  --gradient-primary: 45deg, #e0c3fc 0%, #8ec5fc 100%;
 }

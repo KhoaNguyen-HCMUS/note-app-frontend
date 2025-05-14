@@ -11,7 +11,7 @@ export default function Layout({ children }) {
     <div className='flex flex-col min-h-screen'>
       {!isAuthPage && <Header />}
       <main className='flex-1'>{children}</main>
-      <Footer />
+      {!isAuthPage && <Footer />}
     </div>
   );
 }
