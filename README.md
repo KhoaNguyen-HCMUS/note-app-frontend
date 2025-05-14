@@ -2,6 +2,7 @@
 
 A modern note-taking application built with React and Tailwind CSS.
 
+Back end repo: [Repo](https://github.com/KhoaNguyen-HCMUS/note-app-backend.git)
 ## Features
 
 - 🔐 User Authentication (Login/Register)
