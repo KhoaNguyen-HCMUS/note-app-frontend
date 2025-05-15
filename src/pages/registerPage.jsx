@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaEnvelope, FaLock, FaUserPlus } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaUserPlus, FaSpinner } from 'react-icons/fa';
 import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
 
@@ -12,9 +12,11 @@ export default function RegisterPage() {
     password: '',
     confirmPassword: '',
   });
+  const [loading, setLoading] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (form.password !== form.confirmPassword) {
       toast.error('Passwords do not match.');
@@ -39,6 +41,8 @@ export default function RegisterPage() {
         toast.error('An unexpected error occurred. Please try again.');
       }
       console.error('Register error:', error.response?.data?.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -120,10 +124,11 @@ export default function RegisterPage() {
 
             <button
               type='submit'
-              className='cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors'
+              disabled={loading}
+              className='cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed'
             >
-              <FaUserPlus />
-              Register
+              {loading ? <FaSpinner className='animate-spin' /> : <FaUserPlus />}
+              {loading ? 'Registering...' : 'Register'}
             </button>
 
             <p className='text-center text-gray-600'>
@@ -131,7 +136,8 @@ export default function RegisterPage() {
               <button
                 type='button'
                 onClick={() => navigate('/login')}
-                className='cursor-pointer text-blue-600 hover:text-blue-700'
+                className='cursor-pointer text-blue-600 hover:text-blue-700 disabled:text-gray-400 disabled:cursor-not-allowed'
+                disabled={loading}
               >
                 Login here
               </button>

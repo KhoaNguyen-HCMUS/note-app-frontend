@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaSignInAlt, FaSpinner } from 'react-icons/fa';
 import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
 
@@ -89,11 +89,11 @@ export default function LoginPage() {
             </div>
             <button
               type='submit'
-              className='cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed'
               disabled={loading}
+              className='cursor-pointer w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed'
             >
-              <FaSignInAlt />
-              Log in
+              {loading ? <FaSpinner className='animate-spin' /> : <FaSignInAlt />}
+              {loading ? 'Loading...' : 'Log in'}
             </button>
           </form>
         </div>
