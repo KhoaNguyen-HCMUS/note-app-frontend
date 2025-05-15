@@ -6,6 +6,8 @@ import { AuthProvider } from './context/authContext';
 import Layout from './components/layout/layout';
 import PrivateRoute from './components/privateRoute';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <AuthProvider>
@@ -24,6 +26,20 @@ function App() {
             />
             <Route path='/' element={<Navigate to='/login' replace />} />
           </Routes>
+          <ToastContainer
+            position='top-right'
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='light'
+            transition={toast.Bounce}
+          />
+          <ToastContainer />
         </Layout>
       </BrowserRouter>
     </AuthProvider>

@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaSignInAlt } from 'react-icons/fa';
 import axiosClient from '../api/axiosClient';
+import { toast } from 'react-toastify';
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
@@ -19,7 +19,11 @@ export default function LoginPage() {
       localStorage.setItem('username', res.data.user.username);
       navigate('/notes');
     } catch (error) {
-      setError('Đăng nhập thất bại');
+      if (error.response?.status === 400) {
+        toast.error('Invalid email or password.');
+      } else {
+        toast.error('Server connection error.');
+      }
       console.error('Login error:', error.response?.data?.message);
     } finally {
       setLoading(false);
@@ -36,12 +40,6 @@ export default function LoginPage() {
               Log in
             </h2>
           </div>
-
-          {error && (
-            <div className='mb-4 flex items-center bg-red-100 text-red-700 p-4 rounded-lg'>
-              <FaLock className='mr-2' /> {error}
-            </div>
-          )}
 
           <form onSubmit={handleLogin} className='space-y-6'>
             <div>
