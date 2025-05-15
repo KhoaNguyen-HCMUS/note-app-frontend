@@ -31,6 +31,13 @@ export default function RegisterPage() {
       toast.success('Registration successful! Please log in.');
       navigate('/login');
     } catch (error) {
+      if (error.response?.status === 400) {
+        toast.error('Email is already exist, please check your data.');
+      } else if (error.response?.status === 500) {
+        toast.error('Server error, please try again later.');
+      } else {
+        toast.error('An unexpected error occurred. Please try again.');
+      }
       console.error('Register error:', error.response?.data?.message);
     }
   };
