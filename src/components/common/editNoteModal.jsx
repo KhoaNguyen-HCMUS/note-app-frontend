@@ -46,7 +46,7 @@ export default function EditNoteModal({ show, onClose, note, onSubmit }) {
           {/* Header */}
           <div className='flex items-center justify-between px-6 py-4 bg-blue-600 rounded-t-lg'>
             <h5 className='flex items-center text-xl font-semibold text-white'>
-              <FaHeading className='mr-2' /> Chỉnh sửa ghi chú
+              <FaHeading className='mr-2' /> Edit Note
             </h5>
             <button
               onClick={onClose}
@@ -64,7 +64,7 @@ export default function EditNoteModal({ show, onClose, note, onSubmit }) {
               <div>
                 <label className='flex items-center text-gray-700 mb-2'>
                   <FaHeading className='mr-2 text-blue-600' />
-                  <span>Tiêu đề</span>
+                  <span>Title</span>
                 </label>
                 <input
                   type='text'
@@ -79,7 +79,7 @@ export default function EditNoteModal({ show, onClose, note, onSubmit }) {
               <div>
                 <label className='flex items-center text-gray-700 mb-2'>
                   <FaAlignLeft className='mr-2 text-blue-600' />
-                  <span>Nội dung</span>
+                  <span>Content</span>
                 </label>
                 <textarea
                   className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
@@ -101,9 +101,9 @@ export default function EditNoteModal({ show, onClose, note, onSubmit }) {
                   className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
                   value={form.tags}
                   onChange={(e) => setForm({ ...form, tags: e.target.value })}
-                  placeholder='Nhập tags, phân cách bằng dấu phẩy'
+                  placeholder='Enter tags, separate by commas'
                 />
-                <small className='text-gray-500 mt-1 block'>Ví dụ: công việc, cá nhân, quan trọng</small>
+                <small className='text-gray-500 mt-1 block'>For example: work, individual, important</small>
               </div>
             </div>
 
@@ -114,13 +114,13 @@ export default function EditNoteModal({ show, onClose, note, onSubmit }) {
                 className='cursor-pointer flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors'
                 onClick={onClose}
               >
-                <FaTimes className='mr-2' /> Hủy
+                <FaTimes className='mr-2' /> Cancel
               </button>
               <button
                 type='submit'
                 className='cursor-pointer flex items-center px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors'
               >
-                <FaSave className='mr-2' /> Lưu thay đổi
+                <FaSave className='mr-2' /> Save
               </button>
             </div>
           </form>
