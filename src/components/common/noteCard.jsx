@@ -25,8 +25,7 @@ export default function NoteCard({ note, onUpdate, onEdit }) {
     <div className='w-full bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'>
       <div className='p-6 flex flex-col h-full'>
         <h5 className='text-xl font-semibold text-gray-800 mb-3'>{note.title}</h5>
-        <p className='text-gray-600 flex-grow mb-4'>{note.content}</p>
-
+        <div className='text-gray-600 flex-grow mb-4 whitespace-pre-wrap break-words'>{note.content}</div>
         <div className='space-x-2 mb-4'>
           {note.tags.map((tag) => (
             <span key={tag} className='inline-block px-2 py-1 text-sm text-gray-600 bg-gray-100 rounded-full'>
