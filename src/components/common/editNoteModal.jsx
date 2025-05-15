@@ -40,7 +40,7 @@ export default function EditNoteModal({ show, onClose, note, onSubmit }) {
   return (
     <>
       <div className='text-black fixed inset-0 z-50 flex items-center justify-center p-4'>
-        <div className='fixed inset-0 bg-opacity-50' onClick={onClose}></div>
+        <div className='fixed inset-0 bg-gray-700/50' onClick={onClose}></div>
 
         <div className='relative w-full max-w-2xl bg-white rounded-lg shadow-xl'>
           {/* Header */}
