@@ -78,11 +78,11 @@ export default function NotesPage() {
     return tags.concat(note.tags || []);
   }, []);
   return (
-    <div className='container mx-auto px-4 py-8'>
+    <div className='container mx-auto px-4 py-8 '>
       <div className='flex justify-between items-center mb-6'>
-        <h2 className='text-2xl font-bold text-gray-800'>All Notes</h2>
+        <h2 className='text-2xl font-bold text-primary'>All Notes</h2>
         <button
-          className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
+          className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg text-button-text rounded-lg hover:bg-button-hover transition-colors'
           onClick={() => setShowModal(true)}
         >
           <FaPlus className='text-sm' /> Add Note

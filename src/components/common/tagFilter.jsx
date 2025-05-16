@@ -10,7 +10,9 @@ export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }
         <button
           className={`cursor-pointer px-3 py-1.5 text-sm rounded-full transition-colors
             ${
-              selectedTag === null ? 'bg-blue-600 text-white' : 'border border-blue-600 text-blue-600 hover:bg-blue-50'
+              selectedTag === null
+                ? 'bg-button-bg text-button-text'
+                : 'border border-button-bg text-button-bg hover:bg-button-hover-light'
             }`}
           onClick={() => onSelectTag(null)}
         >
@@ -21,7 +23,9 @@ export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }
             key={tag}
             className={`cursor-pointer px-3 py-1.5 text-sm rounded-full transition-colors
               ${
-                selectedTag === tag ? 'bg-blue-600 text-white' : 'border border-blue-600 text-blue-600 hover:bg-blue-50'
+                selectedTag === tag
+                  ? 'bg-button-bg text-button-text'
+                  : 'border border-button-bg text-button-bg hover:bg-button-hover-light'
               }`}
             onClick={() => onSelectTag(tag)}
           >

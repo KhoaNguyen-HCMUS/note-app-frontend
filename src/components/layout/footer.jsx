@@ -6,7 +6,7 @@ export default function Footer() {
       <div className='container mx-auto px-4'>
         <div className='flex flex-col md:flex-row items-center justify-between'>
           <div className='text-center md:text-left mb-4 md:mb-0'>
-            <p className='text-gray-600'>&copy; {new Date().getFullYear()} Note App. All rights reserved.</p>
+            <p className='text-text-body'>&copy; {new Date().getFullYear()} Note App. All rights reserved.</p>
           </div>
           <div className='text-center md:text-right'>
             <p className='flex items-center justify-center md:justify-end gap-2 text-gray-600'>
