@@ -1,6 +1,6 @@
 import { FaStickyNote, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import ThemeToggle from '../common/ThemeToggle';
+import ThemeToggle from '../common/themeToggle.jsx';
 
 export default function Header() {
   const navigate = useNavigate();

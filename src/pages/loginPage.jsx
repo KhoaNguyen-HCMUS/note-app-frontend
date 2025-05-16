@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaSignInAlt, FaSpinner } from 'react-icons/fa';
 import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
-import ThemeToggle from '../components/common/ThemeToggle';
+import ThemeToggle from '../components/common/themeToggle.jsx';
 
 export default function LoginPage() {
   const navigate = useNavigate();
