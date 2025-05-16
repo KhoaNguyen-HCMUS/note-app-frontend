@@ -78,41 +78,43 @@ export default function NotesPage() {
     return tags.concat(note.tags || []);
   }, []);
   return (
-    <div className='container mx-auto px-4 py-8 '>
-      <div className='flex justify-between items-center mb-6'>
-        <h2 className='text-2xl font-bold text-primary'>All Notes</h2>
-        <button
-          className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg text-button-text rounded-lg hover:bg-button-hover transition-colors'
-          onClick={() => setShowModal(true)}
-        >
-          <FaPlus className='text-sm' /> Add Note
-        </button>
-      </div>
+    <div className='w-full min-h-screen bg-linear-(--gradient-primary) dark:bg-linear-(--gradient-primary-dark)'>
+      <div className='container mx-auto px-4 py-8 '>
+        <div className='flex justify-between items-center mb-6'>
+          <h2 className='text-2xl font-bold text-primary dark:text-primary-dark'>All Notes</h2>
+          <button
+            className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg dark:bg-button-bg-dark text-button-text dark:text-button-text-dark rounded-lg hover:bg-button-hover dark:hover:bg-button-hover-dark transition-colors'
+            onClick={() => setShowModal(true)}
+          >
+            <FaPlus className='text-sm' /> Add Note
+          </button>
+        </div>
 
-      <AddNoteModal show={showModal} onClose={() => setShowModal(false)} onSubmit={handleAddNote} />
+        <AddNoteModal show={showModal} onClose={() => setShowModal(false)} onSubmit={handleAddNote} />
 
-      <EditNoteModal
-        show={showEditModal}
-        onClose={() => {
-          setShowEditModal(false);
-          setSelectedNote(null);
-        }}
-        note={selectedNote}
-        onSubmit={handleEditSubmit}
-      />
+        <EditNoteModal
+          show={showEditModal}
+          onClose={() => {
+            setShowEditModal(false);
+            setSelectedNote(null);
+          }}
+          note={selectedNote}
+          onSubmit={handleEditSubmit}
+        />
 
-      <div className='mb-6'>
-        <TagFilter tags={allTags} selectedTag={tagFilter} onSelectTag={setTagFilter} />
-      </div>
+        <div className='mb-6'>
+          <TagFilter tags={allTags} selectedTag={tagFilter} onSelectTag={setTagFilter} />
+        </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {filteredNotes.length > 0 ? (
-          filteredNotes.map((note) => (
-            <NoteCard key={note._id} note={note} onUpdate={fetchNotes} onEdit={() => handleEditClick(note)} />
-          ))
-        ) : (
-          <EmptyNotes />
-        )}
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {filteredNotes.length > 0 ? (
+            filteredNotes.map((note) => (
+              <NoteCard key={note._id} note={note} onUpdate={fetchNotes} onEdit={() => handleEditClick(note)} />
+            ))
+          ) : (
+            <EmptyNotes />
+          )}
+        </div>
       </div>
     </div>
   );

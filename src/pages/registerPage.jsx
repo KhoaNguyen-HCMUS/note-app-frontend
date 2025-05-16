@@ -47,11 +47,11 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className='min-h-screen bg-linear-(--gradient-primary) flex items-center justify-center px-4'>
+    <div className='min-h-screen bg-linear-(--gradient-primary) dark:bg-linear-(--gradient-primary-dark) flex items-center justify-center px-4'>
       <div className='max-w-md w-full'>
-        <div className='bg-card-bg rounded-lg shadow-xl p-8'>
+        <div className='bg-card-bg dark:bg-card-bg-dark rounded-lg shadow-xl p-8'>
           <div className='mb-8 text-center'>
-            <h2 className='flex items-center justify-center text-2xl font-bold text-primary'>
+            <h2 className='flex items-center justify-center text-2xl font-bold text-primary dark:text-primary-dark'>
               <FaUserPlus className='mr-2' />
               Register
             </h2>
@@ -65,7 +65,7 @@ export default function RegisterPage() {
                 </span>
                 <input
                   type='text'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg bg-card-bg text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary'
+                  className='w-full pl-10 pr-4 py-2 border border-border-light  rounded-lg bg-card-bg text-primary '
                   placeholder='Username'
                   value={form.username}
                   onChange={(e) => setForm({ ...form, username: e.target.value })}
@@ -81,7 +81,7 @@ export default function RegisterPage() {
                 </span>
                 <input
                   type='email'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg bg-card-bg text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary'
+                  className='w-full pl-10 pr-4 py-2 border border-border-light  rounded-lg bg-card-bg text-primary '
                   placeholder='Email'
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -97,7 +97,7 @@ export default function RegisterPage() {
                 </span>
                 <input
                   type='password'
-                  className='w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-card-bg text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary'
+                  className='w-full pl-10 pr-4 py-2 border border-border-light  rounded-lg bg-card-bg text-primary '
                   placeholder='Password'
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -113,7 +113,7 @@ export default function RegisterPage() {
                 </span>
                 <input
                   type='password'
-                  className='w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-card-bg text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary'
+                  className='w-full pl-10 pr-4 py-2 border border-border-light  rounded-lg bg-card-bg text-primary '
                   placeholder='Confirm Password'
                   value={form.confirmPassword}
                   onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
@@ -125,18 +125,18 @@ export default function RegisterPage() {
             <button
               type='submit'
               disabled={loading}
-              className='cursor-pointer w-full bg-button-bg text-button-text py-2 px-4 rounded-lg hover:bg-button-hover focus:outline-none focus:ring-2 focus:ring-button-hover focus:ring-offset-2 flex items-center justify-center gap-2 transition-colors disabled:bg-text-body disabled:cursor-not-allowed'
+              className='cursor-pointer w-full bg-button-bg dark:bg-button-bg-dark text-button-text dark:text-button-text-dark py-2 px-4 rounded-lg hover:bg-button-hover dark:hover:bg-button-hover-dark  flex items-center justify-center gap-2 transition-colors disabled:bg-text-body dark:disabled:text-text-body-dark disabled:cursor-not-allowed'
             >
               {loading ? <FaSpinner className='animate-spin' /> : <FaUserPlus />}
               {loading ? 'Registering...' : 'Register'}
             </button>
 
-            <p className='text-center text-text-body'>
+            <p className='text-center text-text-body dark:text-text-body-dark'>
               Already have an account?{' '}
               <button
                 type='button'
                 onClick={() => navigate('/login')}
-                className='cursor-pointer text-link hover:text-link-hover disabled:text-text-body disabled:cursor-not-allowed'
+                className='cursor-pointer text-link hover:text-link-hover disabled:text-text-body dark:disabled:text-text-body-dark disabled:cursor-not-allowed'
                 disabled={loading}
               >
                 Login here
