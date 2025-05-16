@@ -5,11 +5,11 @@
   --color-primary: #082f49;
   --color-primary-dark: #e0e7ef;
 
-  --gradient-primary: 45deg, #e0c3fc 0%, #8ec5fc 100%;
-  --gradient-primary-dark: 45deg,#16053d 0%, #4361ee 100%;
+  --gradient-primary: 45deg,rgb(206, 246, 246) 0%,rgb(200, 224, 248) 100%;
+  --gradient-primary-dark: 45deg,rgb(76, 0, 112) 0%,rgb(4, 36, 179) 100%;
 
   --gradient-text: 45deg,#0077ed 0%,#8400ff 100%;
-  --gradient-text-dark: 45deg, #4cc9f0 0%, #c77dff 100%;
+  --gradient-text-dark: 45deg,rgb(131, 224, 252) 0%,rgb(208, 158, 246) 100%;
 
   --color-text-header: #1e1e2f;
   --color-text-body: #4b4b5e;

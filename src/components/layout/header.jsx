@@ -15,7 +15,7 @@ export default function Header() {
     <header className='bg-white dark:bg-gray-900 shadow-sm'>
       <div className='container mx-auto px-4'>
         <div className='flex justify-between items-center py-3'>
-          <div className='flex items-center bg-linear-(--gradient-text) bg-clip-text text-transparent'>
+          <div className='flex items-center bg-linear-(--gradient-text) dark:bg-linear-(--gradient-text-dark) bg-clip-text text-transparent'>
             <FaStickyNote className='text-blue-600 mr-2' size={24} />
             <h1 className='text-xl font-semibold'>Lument Note App</h1>
           </div>
