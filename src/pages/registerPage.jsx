@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaUserPlus, FaSpinner } from 'react-icons/fa';
 import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
+import ThemeToggle from '../components/common/themeToggle.jsx';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -48,6 +49,9 @@ export default function RegisterPage() {
 
   return (
     <div className='min-h-screen bg-linear-(--gradient-primary) dark:bg-linear-(--gradient-primary-dark) flex items-center justify-center px-4'>
+      <div className='absolute top-4 right-4'>
+        <ThemeToggle />
+      </div>
       <div className='max-w-md w-full'>
         <div className='bg-card-bg dark:bg-card-bg-dark rounded-lg shadow-xl p-8'>
           <div className='mb-8 text-center'>
@@ -60,12 +64,12 @@ export default function RegisterPage() {
           <form onSubmit={handleRegister} className='space-y-6'>
             <div>
               <div className='relative'>
-                <span className='absolute left-3 top-1/2 transform -translate-y-1/2 text-primary'>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary dark:text-primary-dark '>
                   <FaUser />
                 </span>
                 <input
                   type='text'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light  rounded-lg bg-card-bg text-primary '
+                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary dark:text-primary-dark bg-card-bg dark:bg-card-bg-dark '
                   placeholder='Username'
                   value={form.username}
                   onChange={(e) => setForm({ ...form, username: e.target.value })}
@@ -76,12 +80,12 @@ export default function RegisterPage() {
 
             <div>
               <div className='relative'>
-                <span className='absolute left-3 top-1/2 transform -translate-y-1/2 text-primary'>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary dark:text-primary-dark '>
                   <FaEnvelope />
                 </span>
                 <input
                   type='email'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light  rounded-lg bg-card-bg text-primary '
+                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary dark:text-primary-dark bg-card-bg dark:bg-card-bg-dark '
                   placeholder='Email'
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -92,12 +96,12 @@ export default function RegisterPage() {
 
             <div>
               <div className='relative'>
-                <span className='absolute left-3 top-1/2 transform -translate-y-1/2 text-primary'>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary dark:text-primary-dark '>
                   <FaLock />
                 </span>
                 <input
                   type='password'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light  rounded-lg bg-card-bg text-primary '
+                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary dark:text-primary-dark bg-card-bg dark:bg-card-bg-dark '
                   placeholder='Password'
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -108,12 +112,12 @@ export default function RegisterPage() {
 
             <div>
               <div className='relative'>
-                <span className='absolute left-3 top-1/2 transform -translate-y-1/2 text-primary'>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary dark:text-primary-dark '>
                   <FaLock />
                 </span>
                 <input
                   type='password'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light  rounded-lg bg-card-bg text-primary '
+                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary dark:text-primary-dark bg-card-bg dark:bg-card-bg-dark '
                   placeholder='Confirm Password'
                   value={form.confirmPassword}
                   onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
