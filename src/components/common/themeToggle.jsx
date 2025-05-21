@@ -8,7 +8,7 @@ export default function ThemeToggle() {
     <div className='flex items-center gap-2 p-2 rounded-lg bg-card-bg dark:bg-gray-700'>
       <button
         onClick={() => setTheme('light')}
-        className={`p-2 rounded-md transition-colors ${
+        className={`cursor-pointer p-2 rounded-md transition-colors ${
           theme === 'light'
             ? 'bg-white text-yellow-500 shadow-sm'
             : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
@@ -19,7 +19,7 @@ export default function ThemeToggle() {
       </button>
       <button
         onClick={() => setTheme('dark')}
-        className={`p-2 rounded-md transition-colors ${
+        className={`cursor-pointer p-2 rounded-md transition-colors ${
           theme === 'dark'
             ? 'bg-gray-800 text-blue-400 shadow-sm'
             : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
@@ -30,7 +30,7 @@ export default function ThemeToggle() {
       </button>
       <button
         onClick={() => setTheme('system')}
-        className={`p-2 rounded-md transition-colors ${
+        className={`cursor-pointer p-2 rounded-md transition-colors ${
           theme === 'system'
             ? 'bg-gray-200 text-gray-900 dark:bg-gray-600 dark:text-gray-100 shadow-sm'
             : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
