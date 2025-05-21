@@ -48,14 +48,14 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className='min-h-screen bg-linear-(--gradient-primary) dark:bg-linear-(--gradient-primary-dark) flex items-center justify-center px-4'>
+    <div className='min-h-screen bg-linear-(--gradient-primary)  flex items-center justify-center px-4'>
       <div className='absolute top-4 right-4'>
         <ThemeToggle />
       </div>
       <div className='max-w-md w-full'>
-        <div className='bg-card-bg dark:bg-card-bg-dark rounded-lg shadow-xl p-8'>
+        <div className='bg-card-bg rounded-lg shadow-xl p-8'>
           <div className='mb-8 text-center'>
-            <h2 className='flex items-center justify-center text-2xl font-bold text-primary dark:text-primary-dark'>
+            <h2 className='flex items-center justify-center text-2xl font-bold text-primary '>
               <FaUserPlus className='mr-2' />
               Register
             </h2>
@@ -64,12 +64,12 @@ export default function RegisterPage() {
           <form onSubmit={handleRegister} className='space-y-6'>
             <div>
               <div className='relative'>
-                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary dark:text-primary-dark '>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary '>
                   <FaUser />
                 </span>
                 <input
                   type='text'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary dark:text-primary-dark bg-card-bg dark:bg-card-bg-dark '
+                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary  bg-card-bg '
                   placeholder='Username'
                   value={form.username}
                   onChange={(e) => setForm({ ...form, username: e.target.value })}
@@ -80,12 +80,12 @@ export default function RegisterPage() {
 
             <div>
               <div className='relative'>
-                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary dark:text-primary-dark '>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary  '>
                   <FaEnvelope />
                 </span>
                 <input
                   type='email'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary dark:text-primary-dark bg-card-bg dark:bg-card-bg-dark '
+                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary  bg-card-bg '
                   placeholder='Email'
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -96,12 +96,12 @@ export default function RegisterPage() {
 
             <div>
               <div className='relative'>
-                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary dark:text-primary-dark '>
+                <span className='absolute left-3 top-1/2 transform -translate-y-1/2  text-primary '>
                   <FaLock />
                 </span>
                 <input
                   type='password'
-                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary dark:text-primary-dark bg-card-bg dark:bg-card-bg-dark '
+                  className='w-full pl-10 pr-4 py-2 border border-border-light rounded-lg  text-primary  bg-card-bg  '
                   placeholder='Password'
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}

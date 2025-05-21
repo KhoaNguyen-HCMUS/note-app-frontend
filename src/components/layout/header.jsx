@@ -15,20 +15,17 @@ export default function Header() {
   };
 
   return (
-    <header className='bg-white dark:bg-gray-900 shadow-sm'>
+    <header className='bg-card-bg shadow-sm'>
       <div className='container mx-auto px-4'>
         <div className='flex justify-between items-center py-3'>
           {/* Logo and App Name */}
-          <div className='flex items-center bg-linear-(--gradient-text) dark:bg-linear-(--gradient-text-dark) bg-clip-text text-transparent'>
+          <div className='flex items-center bg-linear-(--gradient-text) bg-clip-text text-transparent'>
             <FaStickyNote className='text-blue-600 mr-2' size={24} />
             <h1 className='text-xl font-semibold'>Lument Note App</h1>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className='md:hidden p-2 text-primary dark:text-primary-dark'
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <button className='md:hidden p-2 text-primary' onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
 
@@ -45,7 +42,7 @@ export default function Header() {
             top-16 md:top-0 
             left-0 md:left-auto 
             right-0 md:right-auto 
-            bg-white dark:bg-gray-900 
+            bg-card-bg 
             md:bg-transparent 
             p-4 md:p-0 
             shadow-lg md:shadow-none
@@ -54,13 +51,13 @@ export default function Header() {
           >
             <ThemeToggle />
 
-            <div className='flex items-center gap-2 text-primary dark:text-primary-dark'>
+            <div className='flex items-center gap-2 text-primary '>
               <FaUser size={20} />
               <span>{userName}</span>
             </div>
 
             <button
-              className='cursor-pointer flex items-center gap-2 px-4 py-2 border border-button-red-bg dark:border-button-red-bg-dark text-button-red-bg dark:text-button-red-bg-dark hover:bg-button-red-hover-light dark:hover:bg-button-red-hover-dark/30 rounded-lg transition-colors w-full md:w-auto justify-center'
+              className='cursor-pointer flex items-center gap-2 px-4 py-2 border border-button-red-bg  text-button-red-bg  hover:bg-button-red-hover-light  rounded-lg transition-colors w-full md:w-auto justify-center'
               onClick={handleLogout}
             >
               <FaSignOutAlt /> Log out

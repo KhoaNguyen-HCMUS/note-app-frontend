@@ -5,14 +5,14 @@ export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }
 
   return (
     <div className='mb-4'>
-      <h6 className='text-lg font-semibold text-primary dark:text-primary-dark mb-3'>Filter by Tag:</h6>
+      <h6 className='text-lg font-semibold text-primary  mb-3'>Filter by Tag:</h6>
       <div className='flex flex-wrap gap-2'>
         <button
           className={`cursor-pointer px-3 py-1.5 text-sm rounded-full transition-colors
             ${
               selectedTag === null
-                ? 'bg-button-bg text-button-text dark:bg-button-bg-dark dark:text-button-text-dark'
-                : 'border border-button-bg text-button-bg hover:bg-button-hover-light dark:border-button-bg-dark dark:text-button-bg-dark dark:hover:bg-button-hover-dark'
+                ? 'bg-button-bg text-button-text'
+                : 'border border-button-bg text-button-bg hover:bg-button-hover-light '
             }`}
           onClick={() => onSelectTag(null)}
         >
@@ -24,8 +24,8 @@ export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }
             className={`cursor-pointer px-3 py-1.5 text-sm rounded-full transition-colors
               ${
                 selectedTag === tag
-                  ? 'bg-button-bg text-button-text dark:bg-button-bg-dark dark:text-button-text-dark'
-                  : 'border border-button-bg text-button-bg hover:bg-button-hover-light dark:border-button-bg-dark dark:text-button-bg-dark dark:hover:bg-button-hover-dark/30'
+                  ? 'bg-button-bg text-button-text'
+                  : 'border border-button-bg text-button-bg hover:bg-button-hover-light /30'
               }`}
             onClick={() => onSelectTag(tag)}
           >

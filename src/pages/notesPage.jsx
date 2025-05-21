@@ -78,12 +78,12 @@ export default function NotesPage() {
     return tags.concat(note.tags || []);
   }, []);
   return (
-    <div className='w-full min-h-screen bg-linear-(--gradient-primary) dark:bg-linear-(--gradient-primary-dark)'>
+    <div className='w-full min-h-screen bg-linear-(--gradient-primary) '>
       <div className='container mx-auto px-4 py-8 '>
         <div className='flex justify-between items-center mb-6'>
-          <h2 className='text-2xl font-bold text-primary dark:text-primary-dark'>All Notes</h2>
+          <h2 className='text-2xl font-bold text-primary '>All Notes</h2>
           <button
-            className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg dark:bg-button-bg-dark text-button-text dark:text-button-text-dark rounded-lg hover:bg-button-hover dark:hover:bg-button-hover-dark transition-colors'
+            className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg  text-button-text  rounded-lg hover:bg-button-hover transition-colors'
             onClick={() => setShowModal(true)}
           >
             <FaPlus className='text-sm' /> Add Note
