@@ -5,7 +5,7 @@ import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
 import ThemeToggle from '../components/common/themeToggle.jsx';
 import { GoogleLogin } from '@react-oauth/google';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/themeContext';
 
 export default function LoginPage() {
   const navigate = useNavigate();
