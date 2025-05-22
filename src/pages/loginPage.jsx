@@ -4,6 +4,7 @@ import { FaEnvelope, FaLock, FaSignInAlt, FaSpinner } from 'react-icons/fa';
 import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
 import ThemeToggle from '../components/common/themeToggle.jsx';
+import { GoogleLogin } from '@react-oauth/google';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -29,6 +30,26 @@ export default function LoginPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const res = await axiosClient.post('/auth/google', {
+        credential: credentialResponse.credential,
+      });
+
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('username', res.data.user.username);
+      console.log('Google login response:', res);
+      navigate('/notes');
+    } catch (error) {
+      toast.error('Google login failed');
+      console.error('Google login error:', error);
+    }
+  };
+
+  const handleGoogleError = () => {
+    toast.error('Google login failed');
   };
 
   return (
@@ -91,6 +112,41 @@ export default function LoginPage() {
                 </button>
               </p>
             </div>
+
+            <div className='flex flex-col items-center justify-center w-full'>
+              <span className='text-text-header text-sm tracking-wider mb-3'>or continue with</span>
+
+              <div className='flex justify-center w-full'>
+                <div className='w-full max-w-xs transform transition-transform hover:scale-105'>
+                  <GoogleLogin
+                    onSuccess={handleGoogleSuccess}
+                    onError={handleGoogleError}
+                    useOneTap
+                    shape='pill'
+                    theme={localStorage.getItem('theme') === 'dark' ? 'filled_black' : 'filled_white'}
+                    size='large'
+                    locale='en'
+                    text='continue_with'
+                    containerProps={{
+                      className: `
+                w-full 
+                rounded-full 
+                overflow-hidden 
+                shadow-md hover:shadow-lg 
+                transition-shadow duration-300 
+                border-none outline-none focus:ring-0 focus:outline-none
+              `,
+                      style: {
+                        border: 'none',
+                        outline: 'none',
+                        boxShadow: 'none',
+                      },
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
             <button
               type='submit'
               disabled={loading}
