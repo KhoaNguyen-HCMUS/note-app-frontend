@@ -5,11 +5,13 @@ import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
 import ThemeToggle from '../components/common/themeToggle.jsx';
 import { GoogleLogin } from '@react-oauth/google';
+import { useTheme } from '../context/ThemeContext';
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
+  const { theme } = useTheme();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -123,7 +125,7 @@ export default function LoginPage() {
                     onError={handleGoogleError}
                     useOneTap
                     shape='pill'
-                    theme={localStorage.getItem('theme') === 'dark' ? 'filled_black' : 'filled_white'}
+                    theme={theme === 'dark' ? 'filled_black' : 'filled_white'}
                     size='large'
                     locale='en'
                     text='continue_with'
