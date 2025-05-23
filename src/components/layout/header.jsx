@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { FaStickyNote, FaSignOutAlt, FaUser, FaBars, FaTimes } from 'react-icons/fa';
+import { FaStickyNote, FaSignOutAlt, FaUser, FaBars, FaTimes, FaRobot } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import ThemeToggle from '../common/themeToggle.jsx';
+import ChatbotModal from '../common/chatBotModal.jsx';
 
 export default function Header() {
   const navigate = useNavigate();
   const userName = localStorage.getItem('username') || 'User';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showChatbot, setShowChatbot] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -50,6 +52,14 @@ export default function Header() {
           `}
           >
             <ThemeToggle />
+            <button
+              className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg text-button-text rounded-lg hover:opacity-90 transition-colors'
+              onClick={() => setShowChatbot(true)}
+            >
+              <FaRobot className='text-sm' /> AI Assistant
+            </button>
+
+            <ChatbotModal show={showChatbot} onClose={() => setShowChatbot(false)} />
 
             <div className='flex items-center gap-2 text-primary '>
               <FaUser size={20} />

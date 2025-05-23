@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FaPlus, FaRobot } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 
 import NoteCard from '../components/common/noteCard.jsx';
 import TagFilter from '../components/common/tagFilter.jsx';
@@ -7,7 +7,6 @@ import axiosClient from '../api/axiosClient';
 import EmptyNotes from '../components/common/emptyNotes';
 import AddNoteModal from '../components/common/addNoteModal';
 import EditNoteModal from '../components/common/editNoteModal';
-import ChatbotModal from '../components/common/chatBotModal.jsx';
 
 export default function NotesPage() {
   const [notes, setNotes] = useState([]);
@@ -18,7 +17,6 @@ export default function NotesPage() {
 
   const [selectedNote, setSelectedNote] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [showChatbot, setShowChatbot] = useState(false);
 
   const fetchNotes = async () => {
     setLoading(true);
@@ -90,14 +88,9 @@ export default function NotesPage() {
           >
             <FaPlus className='text-sm' /> Add Note
           </button>
-          <button
-            className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-accent text-button-text rounded-lg hover:opacity-90 transition-colors'
-            onClick={() => setShowChatbot(true)}
-          >
-            <FaRobot className='text-sm' /> AI Assistant
-          </button>
+
         </div>
-        <ChatbotModal show={showChatbot} onClose={() => setShowChatbot(false)} />
+
         <AddNoteModal show={showModal} onClose={() => setShowModal(false)} onSubmit={handleAddNote} />
 
         <EditNoteModal

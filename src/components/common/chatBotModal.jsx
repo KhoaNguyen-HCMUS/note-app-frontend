@@ -96,7 +96,7 @@ export default function ChatbotModal({ show, onClose }) {
               <button
                 type='submit'
                 disabled={isLoading}
-                className='bg-accent text-button-text p-2 rounded-lg hover:opacity-90 
+                className='bg-button-bg cursor-pointer text-button-text p-2 rounded-lg hover:opacity-90 
                 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed'
               >
                 {isLoading ? <FaSpinner className='animate-spin' /> : <FaPaperPlane />}
