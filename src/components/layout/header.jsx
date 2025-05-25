@@ -3,6 +3,7 @@ import { FaStickyNote, FaSignOutAlt, FaUser, FaBars, FaTimes, FaRobot } from 're
 import { useNavigate } from 'react-router-dom';
 import ThemeToggle from '../common/themeToggle.jsx';
 import ChatbotModal from '../common/chatBotModal.jsx';
+import LanguageSwitcher from '../common/languageSwitcher.jsx';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -51,6 +52,8 @@ export default function Header() {
             z-50
           `}
           >
+            <LanguageSwitcher />
+
             <ThemeToggle />
             <button
               className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg text-button-text rounded-lg hover:opacity-90 transition-colors'
