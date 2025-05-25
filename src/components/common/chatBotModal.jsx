@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaRobot, FaTimes, FaPaperPlane, FaSpinner } from 'react-icons/fa';
 import { getChatbotResponse } from '../../api/getChatbotResponse.jsx';
+import { useTranslation } from 'react-i18next';
 
 export default function ChatbotModal({ show, onClose }) {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +54,7 @@ export default function ChatbotModal({ show, onClose }) {
           {/* Header */}
           <div className='flex items-center justify-between px-6 py-4 bg-linear-(--gradient-text) rounded-t-lg'>
             <h5 className='flex items-center text-xl font-semibold text-white'>
-              <FaRobot /> AI Assistant
+              <FaRobot /> {t('AI assistant')}
             </h5>
             <button
               onClick={onClose}

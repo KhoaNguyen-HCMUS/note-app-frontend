@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }) {
+  const { t } = useTranslation();
+
   const uniqueTags = [...new Set(tags)];
 
   return (
     <div className='mb-4'>
-      <h6 className='text-lg font-semibold text-primary  mb-3'>Filter by Tag:</h6>
+      <h6 className='text-lg font-semibold text-primary  mb-3'> {t('tagFilter.title')}</h6>
       <div className='flex flex-wrap gap-2'>
         <button
           className={`cursor-pointer px-3 py-1.5 text-sm rounded-full transition-colors
@@ -16,7 +19,7 @@ export default function TagFilter({ tags = [], selectedTag = null, onSelectTag }
             }`}
           onClick={() => onSelectTag(null)}
         >
-          All
+          {t('tagFilter.allTags')}
         </button>
         {uniqueTags.map((tag) => (
           <button

@@ -1,6 +1,5 @@
 {
   "welcome": "Chào mừng đến với ứng dụng!",
-  "login": "Đăng nhập",
   "logout": "Đăng xuất",
   "email": "Email",
   "password": "Mật khẩu",
@@ -28,5 +27,91 @@
       "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
     },
     "success": "Đăng ký thành công! Vui lòng đăng nhập."
+  },
+
+  "notes": {
+    "title": "Tất Cả Ghi Chú",
+    "addButton": "Thêm Ghi Chú",
+    "loading": "Đang tải...",
+    "errors": {
+      "invalidFormat": "Định dạng dữ liệu không hợp lệ",
+      "fetchError": "Không thể tải ghi chú",
+      "addError": "Lỗi khi thêm ghi chú",
+      "updateError": "Lỗi khi cập nhật ghi chú"
+    },
+    "emptyState": {
+      "title": "Không Tìm Thấy Ghi Chú",
+      "description": "Hãy bắt đầu tạo ghi chú đầu tiên!"
+    }
+  },
+  "login": {
+    "title": "Đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "loginButton": "Đăng nhập",
+    "loading": "Đang tải...",
+    "noAccount": "Bạn chưa có tài khoản?",
+    "register": "Đăng ký.",
+    "continueWith": "hoặc tiếp tục với",
+    "errors": {
+      "invalidCredentials": "Email hoặc mật khẩu không đúng.",
+      "serverError": "Lỗi kết nối máy chủ.",
+      "googleError": "Đăng nhập Google thất bại"
+    }
+  },
+  "tagFilter": {
+    "title": "Lọc theo Nhãn",
+    "allTags": "Tất cả"
+  },
+  "noteCard": {
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa ghi chú này?",
+    "deleteError": "Không thể xóa ghi chú. Vui lòng thử lại.",
+    "loading": "Đang xóa..."
+  },
+  "emptyNotes": {
+    "title": "Không tìm thấy ghi chú nào",
+    "description": "Bắt đầu bằng cách tạo ghi chú đầu tiên!"
+  },
+  "editNoteModal": {
+    "title": "Sửa Ghi Chú",
+    "form": {
+      "title": "Tiêu đề",
+      "description": "Nội dung",
+      "tags": "Nhãn",
+      "tagsPlaceholder": "Nhập nhãn, phân cách bằng dấu phẩy",
+      "tagsExample": "Ví dụ: công việc, cá nhân, quan trọng"
+    },
+    "buttons": {
+      "cancel": "Hủy",
+      "save": "Lưu"
+    },
+    "errors": {
+      "updateError": "Lỗi khi cập nhật ghi chú. Vui lòng thử lại."
+    }
+  },
+  "addNoteModal": {
+    "title": "Thêm ghi chú mới",
+    "form": {
+      "title": {
+        "label": "Tiêu đề",
+        "placeholder": "Nhập tiêu đề..."
+      },
+      "description": {
+        "label": "Nội dung",
+        "placeholder": "Nhập nội dung..."
+      },
+      "tags": {
+        "label": "Nhãn",
+        "placeholder": "Nhập nhãn (phân cách bằng dấu phẩy)...",
+        "example": "Ví dụ: cá nhân, quan trọng"
+      }
+    },
+    "buttons": {
+      "close": "Đóng",
+      "cancel": "Hủy",
+      "save": "Lưu"
+    }
   }
 }

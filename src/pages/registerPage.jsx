@@ -54,7 +54,7 @@ export default function RegisterPage() {
 
   return (
     <div className='min-h-screen bg-linear-(--gradient-primary)  flex items-center justify-center px-4'>
-      <div className='absolute top-4 right-4'>
+      <div className='absolute top-4 right-4 mb-4 flex items-center gap-4'>
         <LanguageSwitcher />
         <ThemeToggle />
       </div>

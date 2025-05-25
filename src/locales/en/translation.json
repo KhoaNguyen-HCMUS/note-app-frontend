@@ -1,6 +1,5 @@
 {
   "welcome": "Welcome to the app!",
-  "login": "Log in",
   "logout": "Log out",
   "email": "Email",
   "password": "Password",
@@ -29,5 +28,91 @@
       "unexpected": "An unexpected error occurred. Please try again."
     },
     "success": "Registration successful! Please log in."
+  },
+
+  "notes": {
+    "title": "All Notes",
+    "addButton": "Add Note",
+    "loading": "Loading...",
+    "errors": {
+      "invalidFormat": "Invalid data format received",
+      "fetchError": "Failed to load notes",
+      "addError": "Error adding note",
+      "updateError": "Error updating note"
+    },
+    "emptyState": {
+      "title": "No Notes Found",
+      "description": "Start creating your first note!"
+    }
+  },
+  "login": {
+    "title": "Log in",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Log in",
+    "loading": "Loading...",
+    "noAccount": "You don't have an account?",
+    "register": "Register.",
+    "continueWith": "or continue with",
+    "errors": {
+      "invalidCredentials": "Invalid email or password.",
+      "serverError": "Server connection error.",
+      "googleError": "Google login failed"
+    }
+  },
+  "tagFilter": {
+    "title": "Filter by Tag",
+    "allTags": "All"
+  },
+  "noteCard": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirmDelete": "Are you sure you want to delete this note?",
+    "deleteError": "Cannot delete note. Please try again.",
+    "loading": "Deleting..."
+  },
+  "emptyNotes": {
+    "title": "No notes found",
+    "description": "Get started by creating your first note!"
+  },
+  "editNoteModal": {
+    "title": "Edit Note",
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "tags": "Tags",
+      "tagsPlaceholder": "Enter tags, separate by commas",
+      "tagsExample": "For example: work, individual, important"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "errors": {
+      "updateError": "Error updating note. Please try again."
+    }
+  },
+  "addNoteModal": {
+    "title": "Add new note",
+    "form": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter title..."
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter description..."
+      },
+      "tags": {
+        "label": "Tags",
+        "placeholder": "Enter Tags (Separation by commas)...",
+        "example": "Example: personal, important"
+      }
+    },
+    "buttons": {
+      "close": "Close",
+      "cancel": "Cancel",
+      "save": "Save"
+    }
   }
 }

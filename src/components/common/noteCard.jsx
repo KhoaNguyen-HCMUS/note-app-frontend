@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import axiosClient from '../../api/axiosClient';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
+import axiosClient from '../../api/axiosClient';
+
 export default function NoteCard({ note, onUpdate, onEdit }) {
+  const { t } = useTranslation();
+
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = async () => {
@@ -15,7 +20,7 @@ export default function NoteCard({ note, onUpdate, onEdit }) {
       await onUpdate(); // Wait for the update to complete
     } catch (err) {
       console.error('Lỗi xoá ghi chú:', err);
-      alert('Không thể xoá ghi chú. Vui lòng thử lại.');
+      toast.error(t('noteCard.deleteError'));
     } finally {
       setIsDeleting(false);
     }
@@ -44,7 +49,7 @@ export default function NoteCard({ note, onUpdate, onEdit }) {
             disabled={isDeleting}
           >
             <FaEdit className='mr-1' />
-            Edit
+            {t('noteCard.edit')}
           </button>
           <button
             className='cursor-pointer flex items-center px-3 py-1.5 text-button-red-bg  border border-button-red-bg  rounded hover:bg-button-red-hover-light transition-colors disabled:opacity-50'
@@ -52,7 +57,7 @@ export default function NoteCard({ note, onUpdate, onEdit }) {
             disabled={isDeleting}
           >
             <FaTrash className='mr-1' />
-            Delete
+            {isDeleting ? t('noteCard.loading') : t('noteCard.delete')}
           </button>
         </div>
       </div>

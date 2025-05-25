@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 import NoteCard from '../components/common/noteCard.jsx';
 import TagFilter from '../components/common/tagFilter.jsx';
@@ -17,6 +19,7 @@ export default function NotesPage() {
 
   const [selectedNote, setSelectedNote] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
+  const { t } = useTranslation();
 
   const fetchNotes = async () => {
     setLoading(true);
@@ -27,11 +30,11 @@ export default function NotesPage() {
         setNotes(notesData);
       } else {
         setNotes([]);
-        setError('Invalid data format received');
+        setError(t('notes.errors.invalidFormat'));
       }
     } catch (err) {
       console.error('Error fetching notes:', err);
-      setError('Failed to load notes');
+      setError(t('notes.errors.fetchError'));
       setNotes([]);
     } finally {
       setLoading(false);
@@ -50,6 +53,7 @@ export default function NotesPage() {
       await fetchNotes();
     } catch (err) {
       console.error('Error adding note:', err);
+      toast.error(t('notes.errors.addError'));
     }
   };
 
@@ -65,13 +69,19 @@ export default function NotesPage() {
       setShowEditModal(false);
       setSelectedNote(null);
     } catch (err) {
+      toast.error(t('notes.errors.updateError'));
       console.error('Error updating note:', err);
     }
   };
 
   const filteredNotes = tagFilter ? (notes || []).filter((note) => note.tags.includes(tagFilter)) : notes || [];
 
-  if (loading) return <div className='container mt-4'>Loading...</div>;
+  if (loading)
+    return (
+      <div className=' bg-linear-(--gradient-primary) text-primary justify-center items-center h-screen'>
+        {t('notes.loading')}
+      </div>
+    );
   if (error) return <div className='container mt-4 text-danger'>{error}</div>;
 
   const allTags = notes.reduce((tags, note) => {
@@ -81,14 +91,13 @@ export default function NotesPage() {
     <div className='w-full min-h-screen bg-linear-(--gradient-primary) '>
       <div className='container mx-auto px-4 py-8 '>
         <div className='flex justify-between items-center mb-6'>
-          <h2 className='text-2xl font-bold text-primary '>All Notes</h2>
+          <h2 className='text-2xl font-bold text-primary '>{t('notes.title')}</h2>
           <button
             className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg  text-button-text  rounded-lg hover:bg-button-hover transition-colors'
             onClick={() => setShowModal(true)}
           >
-            <FaPlus className='text-sm' /> Add Note
+            <FaPlus className='text-sm' /> {t('notes.addButton')}
           </button>
-
         </div>
 
         <AddNoteModal show={showModal} onClose={() => setShowModal(false)} onSubmit={handleAddNote} />
