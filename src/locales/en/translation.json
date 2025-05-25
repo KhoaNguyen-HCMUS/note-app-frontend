@@ -1,4 +1,33 @@
 {
   "welcome": "Welcome to the app!",
-  "change_language": "Change language"
+  "login": "Log in",
+  "logout": "Log out",
+  "email": "Email",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "change_language": "Change language",
+  "AI assistant": "AI Assistant",
+  "footer": {
+    "copyright": "© {{year}} Note App. All rights reserved.",
+    "madeBy": "Made with ❤️ by Khoa Nguyen"
+  },
+
+  "register": {
+    "title": "Register",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "registerButton": "Register",
+    "registering": "Registering...",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginHere": "Login here",
+    "errors": {
+      "passwordMatch": "Passwords do not match.",
+      "emailExists": "Email is already exist, please check your data.",
+      "serverError": "Server error, please try again later.",
+      "unexpected": "An unexpected error occurred. Please try again."
+    },
+    "success": "Registration successful! Please log in."
+  }
 }

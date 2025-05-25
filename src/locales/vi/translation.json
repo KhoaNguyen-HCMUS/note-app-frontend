@@ -1,4 +1,32 @@
 {
   "welcome": "Chào mừng đến với ứng dụng!",
-  "change_language": "Đổi ngôn ngữ"
+  "login": "Đăng nhập",
+  "logout": "Đăng xuất",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "confirm_password": "Xác nhận mật khẩu",
+  "change_language": "Đổi ngôn ngữ",
+  "AI assistant": "Trợ lý AI",
+  "footer": {
+    "copyright": "© {{year}} Note App. Đã đăng ký bản quyền.",
+    "madeBy": "Được tạo bởi Khoa Nguyen với ❤️"
+  },
+  "register": {
+    "title": "Đăng ký",
+    "username": "Tên đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "registerButton": "Đăng ký",
+    "registering": "Đang đăng ký...",
+    "alreadyHaveAccount": "Đã có tài khoản?",
+    "loginHere": "Đăng nhập tại đây",
+    "errors": {
+      "passwordMatch": "Mật khẩu không khớp.",
+      "emailExists": "Email đã tồn tại, vui lòng kiểm tra lại.",
+      "serverError": "Lỗi máy chủ, vui lòng thử lại sau.",
+      "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
+    },
+    "success": "Đăng ký thành công! Vui lòng đăng nhập."
+  }
 }

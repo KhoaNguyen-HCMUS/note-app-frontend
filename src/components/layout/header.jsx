@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import ThemeToggle from '../common/themeToggle.jsx';
 import ChatbotModal from '../common/chatBotModal.jsx';
 import LanguageSwitcher from '../common/languageSwitcher.jsx';
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const userName = localStorage.getItem('username') || 'User';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +61,7 @@ export default function Header() {
               className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg text-button-text rounded-lg hover:opacity-90 transition-colors'
               onClick={() => setShowChatbot(true)}
             >
-              <FaRobot className='text-sm' /> AI Assistant
+              <FaRobot className='text-sm' /> {t('AI assistant')}
             </button>
 
             <ChatbotModal show={showChatbot} onClose={() => setShowChatbot(false)} />
@@ -73,7 +75,7 @@ export default function Header() {
               className='cursor-pointer flex items-center gap-2 px-4 py-2 border border-button-red-bg  text-button-red-bg  hover:bg-button-red-hover-light  rounded-lg transition-colors w-full md:w-auto justify-center'
               onClick={handleLogout}
             >
-              <FaSignOutAlt /> Log out
+              <FaSignOutAlt /> {t('logout')}
             </button>
           </div>
         </div>
