@@ -42,7 +42,9 @@
     "emptyState": {
       "title": "Không Tìm Thấy Ghi Chú",
       "description": "Hãy bắt đầu tạo ghi chú đầu tiên!"
-    }
+    },
+    "searchPlaceholder": "Tìm kiếm ghi chú...",
+    "noResults": "Không tìm thấy ghi chú nào phù hợp với tìm kiếm của bạn"
   },
   "login": {
     "title": "Đăng nhập",

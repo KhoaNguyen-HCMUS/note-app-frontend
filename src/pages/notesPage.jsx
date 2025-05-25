@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaSearch, FaSpinner } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { useSearchParams } from 'react-router-dom';
+import { useDebounce } from '../hooks/useDebounce';
 
 import NoteCard from '../components/common/noteCard.jsx';
 import TagFilter from '../components/common/tagFilter.jsx';
@@ -11,9 +13,14 @@ import AddNoteModal from '../components/common/addNoteModal';
 import EditNoteModal from '../components/common/editNoteModal';
 
 export default function NotesPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [keyword, setKeyword] = useState(searchParams.get('keyword') || '');
+  const [searching, setSearching] = useState(false);
+
+  const debouncedKeyword = useDebounce(keyword, 500);
   const [notes, setNotes] = useState([]);
   const [tagFilter, setTagFilter] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [initialLoading, setInitialLoading] = useState(true); // khi vào trang
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -22,9 +29,15 @@ export default function NotesPage() {
   const { t } = useTranslation();
 
   const fetchNotes = async () => {
-    setLoading(true);
+    if (initialLoading || tagFilter) setInitialLoading(true);
+    else setSearching(true);
     try {
-      const res = await axiosClient.get('/notes');
+      // Build query string
+      const params = new URLSearchParams();
+      if (keyword) params.append('keyword', keyword);
+      if (tagFilter) params.append('tag', tagFilter);
+
+      const res = await axiosClient.get(`/notes?${params.toString()}`);
       const notesData = res.data?.data || res.data;
       if (Array.isArray(notesData)) {
         setNotes(notesData);
@@ -37,13 +50,29 @@ export default function NotesPage() {
       setError(t('notes.errors.fetchError'));
       setNotes([]);
     } finally {
-      setLoading(false);
+      setInitialLoading(false);
+      setSearching(false);
     }
   };
 
   useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (debouncedKeyword) {
+      params.set('keyword', debouncedKeyword);
+    } else {
+      params.delete('keyword');
+    }
+    if (tagFilter) {
+      params.set('tag', tagFilter);
+    } else {
+      params.delete('tag');
+    }
+    setSearchParams(params);
+  }, [debouncedKeyword, tagFilter]);
+
+  useEffect(() => {
     fetchNotes();
-  }, []);
+  }, [debouncedKeyword, tagFilter]);
 
   const handleAddNote = async (noteData) => {
     try {
@@ -76,10 +105,13 @@ export default function NotesPage() {
 
   const filteredNotes = tagFilter ? (notes || []).filter((note) => note.tags.includes(tagFilter)) : notes || [];
 
-  if (loading)
+  if (initialLoading)
     return (
-      <div className=' bg-linear-(--gradient-primary) text-primary justify-center items-center h-screen'>
-        {t('notes.loading')}
+      <div className='bg-linear-(--gradient-primary) min-h-screen flex flex-col items-center justify-center'>
+        <div className='flex items-center gap-2'>
+          <FaSpinner className='text-text-body animate-spin text-2xl' />
+          <span className='text-text-body text-xl'>{t('notes.loading')}</span>
+        </div>
       </div>
     );
   if (error) return <div className='container mt-4 text-danger'>{error}</div>;
@@ -111,6 +143,26 @@ export default function NotesPage() {
           note={selectedNote}
           onSubmit={handleEditSubmit}
         />
+
+        <div className='mb-6'>
+          <div className='relative'>
+            <input
+              type='text'
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              placeholder={t('notes.searchPlaceholder')}
+              className='w-full px-4 py-2 pl-10 border border-border-light rounded-lg text-primary bg-card-bg'
+            />
+            {searching ? (
+              <div className='absolute left-3 top-1/2 transform -translate-y-1/2 animate-spin'>
+                <FaSpinner className='text-text-body' />
+                <div className='w-4 h-4 border-2 border-primary border-t-transparent rounded-full'></div>
+              </div>
+            ) : (
+              <FaSearch className='absolute left-3 top-1/2 transform -translate-y-1/2 text-text-body' />
+            )}
+          </div>
+        </div>
 
         <div className='mb-6'>
           <TagFilter tags={allTags} selectedTag={tagFilter} onSelectTag={setTagFilter} />

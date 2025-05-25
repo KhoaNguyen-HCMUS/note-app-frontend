@@ -43,7 +43,9 @@
     "emptyState": {
       "title": "No Notes Found",
       "description": "Start creating your first note!"
-    }
+    },
+    "searchPlaceholder": "Search notes...",
+    "noResults": "No notes found matching your search"
   },
   "login": {
     "title": "Log in",
