@@ -10,7 +10,7 @@ import { useTheme } from '../context/themeContext';
 import LanguageSwitcher from '../components/common/languageSwitcher.jsx';
 
 export default function LoginPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
@@ -131,8 +131,8 @@ export default function LoginPage() {
                     shape='pill'
                     theme={theme === 'dark' ? 'filled_black' : 'filled_white'}
                     size='large'
-                    locale='en'
-                    text='continue_with'
+                    locale={i18n.language}
+                    text={t('login.continueWith')}
                     containerProps={{
                       className: `
                 w-full 
@@ -141,11 +141,16 @@ export default function LoginPage() {
                 shadow-md hover:shadow-lg 
                 transition-shadow duration-300 
                 border-none outline-none focus:ring-0 focus:outline-none
+                            flex justify-center
+
               `,
                       style: {
                         border: 'none',
                         outline: 'none',
                         boxShadow: 'none',
+                        margin: '0 auto', 
+                        display: 'flex', 
+                        justifyContent: 'center',
                       },
                     }}
                   />
