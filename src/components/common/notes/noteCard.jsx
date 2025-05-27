@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-import axiosClient from '../../api/axiosClient';
+import axiosClient from '../../../api/axiosClient';
 
 export default function NoteCard({ note, onUpdate, onEdit }) {
   const { t } = useTranslation();

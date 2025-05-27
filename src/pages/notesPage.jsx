@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../hooks/useDebounce';
 
-import NoteCard from '../components/common/noteCard.jsx';
+import NoteCard from '../components/common/notes/noteCard.jsx';
 import TagFilter from '../components/common/notes/tagFilter.jsx';
 import axiosClient from '../api/axiosClient';
 import EmptyNotes from '../components/common/notes/emptyNotes.jsx';

@@ -36,7 +36,7 @@
 .dark {
 /* 🎨 Màu chính và gradient nền */
   --color-primary: #e0e7ef;
-  --gradient-primary: 135deg, #0f2027, #203a43, #2c5364;
+  --gradient-primary: 135deg, #0d1b2a, #1b263b, #415a77;
 
   /* ✨ Gradient cho chữ */
   --gradient-text: 45deg, #4cc9f0 0%, #c77dff 100%;
