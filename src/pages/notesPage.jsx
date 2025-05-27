@@ -6,11 +6,11 @@ import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../hooks/useDebounce';
 
 import NoteCard from '../components/common/noteCard.jsx';
-import TagFilter from '../components/common/tagFilter.jsx';
+import TagFilter from '../components/common/notes/tagFilter.jsx';
 import axiosClient from '../api/axiosClient';
-import EmptyNotes from '../components/common/emptyNotes';
-import AddNoteModal from '../components/common/addNoteModal';
-import EditNoteModal from '../components/common/editNoteModal';
+import EmptyNotes from '../components/common/notes/emptyNotes.jsx';
+import AddNoteModal from '../components/common/notes/addNoteModal.jsx';
+import EditNoteModal from '../components/common/notes/editNoteModal.jsx';
 
 export default function NotesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
