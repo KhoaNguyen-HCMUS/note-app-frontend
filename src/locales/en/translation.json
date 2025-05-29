@@ -35,20 +35,6 @@
     "logout": "Logout"
   },
 
-  "dashboard": {
-    "welcome": "Welcome to your Dashboard",
-    "subtitle": "Manage your notes and tasks efficiently",
-    "totalNotes": "Total Notes",
-    "totalTasks": "Total Tasks",
-    "pendingTasks": "Pending Tasks",
-    "completedTasks": "Completed Tasks",
-    "quickActions": "Quick Actions",
-    "createNote": "Create New Note",
-    "createTask": "Create New Task",
-    "recentActivity": "Recent Activity",
-    "note": "Note",
-    "task": "Task"
-  },
 
   "register": {
     "title": "Register",
@@ -122,6 +108,12 @@
     "owner": "Owner",
     "collaborators": "Collaborators",
     "overdue": "Overdue",
+
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "yesterday": "Yesterday",
+    "daysOverdue": "days overdue",
+    "daysLeft": "days left",
 
     "stats": {
       "total": "Total Tasks",
@@ -313,5 +305,28 @@
     "remove": "Remove",
     "add": "Add",
     "noCollaborators": "No collaborators added yet"
+  },
+
+  "dashboard": {
+    "welcome": "Welcome to your Dashboard",
+    "subtitle": "Manage your notes and tasks efficiently",
+    "totalNotes": "Total Notes",
+    "totalTasks": "Total Tasks",
+    "pendingTasks": "Pending Tasks",
+    "completedTasks": "Completed Tasks",
+    "overdueTasks": "Overdue Tasks",
+    "todayTasks": "Due Today",
+    "quickActions": "Quick Actions",
+    "createNote": "Create New Note",
+    "createNoteDesc": "Start writing your thoughts",
+    "createTask": "Create New Task",
+    "createTaskDesc": "Add a new task to your list",
+    "recentNotes": "Recent Notes",
+    "recentTasks": "Recent Tasks",
+    "upcomingTasks": "Upcoming Tasks",
+    "viewAll": "View All",
+    "noRecentNotes": "No recent notes",
+    "noRecentTasks": "No recent tasks",
+    "noUpcomingTasks": "No upcoming tasks"
   }
 }

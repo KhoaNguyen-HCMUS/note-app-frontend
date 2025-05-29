@@ -35,21 +35,6 @@
     "logout": "Đăng xuất"
   },
 
-  "dashboard": {
-    "welcome": "Chào mừng đến với Bảng điều khiển",
-    "subtitle": "Quản lý ghi chú và công việc hiệu quả",
-    "totalNotes": "Tổng ghi chú",
-    "totalTasks": "Tổng công việc",
-    "pendingTasks": "Công việc đang chờ",
-    "completedTasks": "Công việc hoàn thành",
-    "quickActions": "Thao tác nhanh",
-    "createNote": "Tạo ghi chú mới",
-    "createTask": "Tạo công việc mới",
-    "recentActivity": "Hoạt động gần đây",
-    "note": "Ghi chú",
-    "task": "Công việc"
-  },
-
   "register": {
     "title": "Đăng ký",
     "username": "Tên người dùng",
@@ -122,6 +107,11 @@
     "owner": "Chủ sở hữu",
     "collaborators": "Cộng tác viên",
     "overdue": "Quá hạn",
+    "today": "Hôm nay",
+    "tomorrow": "Ngày mai",
+    "yesterday": "Hôm qua",
+    "daysOverdue": "ngày quá hạn",
+    "daysLeft": "ngày còn lại",
 
     "stats": {
       "total": "Tổng công việc",
@@ -313,5 +303,29 @@
     "remove": "Xóa",
     "add": "Thêm",
     "noCollaborators": "Chưa có cộng tác viên nào được thêm"
-  }
+  },
+
+  "dashboard": {
+    "welcome": "Chào mừng đến với Bảng điều khiển",
+    "subtitle": "Quản lý ghi chú và công việc hiệu quả",
+    "totalNotes": "Tổng ghi chú",
+    "totalTasks": "Tổng công việc",
+    "pendingTasks": "Công việc đang chờ",
+    "completedTasks": "Công việc hoàn thành",
+    "overdueTasks": "Công việc quá hạn",
+    "todayTasks": "Hạn hôm nay",
+    "quickActions": "Thao tác nhanh",
+    "createNote": "Tạo ghi chú mới",
+    "createNoteDesc": "Bắt đầu viết suy nghĩ của bạn",
+    "createTask": "Tạo công việc mới",
+    "createTaskDesc": "Thêm công việc mới vào danh sách",
+    "recentNotes": "Ghi chú gần đây",
+    "recentTasks": "Công việc gần đây",
+    "upcomingTasks": "Công việc sắp tới",
+    "viewAll": "Xem tất cả",
+    "noRecentNotes": "Không có ghi chú gần đây",
+    "noRecentTasks": "Không có công việc gần đây",
+    "noUpcomingTasks": "Không có công việc sắp tới"
+  },
+  "tasks": {}
 }
