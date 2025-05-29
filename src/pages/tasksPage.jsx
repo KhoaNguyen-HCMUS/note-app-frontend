@@ -144,16 +144,15 @@ export default function TasksPage() {
     };
   };
 
-  if (initialLoading) {
+  if (initialLoading)
     return (
-      <div className='bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex flex-col items-center justify-center'>
-        <div className='flex items-center gap-3 bg-white px-6 py-4 rounded-lg shadow-lg'>
-          <FaSpinner className='text-indigo-600 animate-spin text-2xl' />
-          <span className='text-gray-700 text-xl font-medium'>{t('tasks.loading')}</span>
+      <div className='bg-linear-(--gradient-primary) min-h-screen flex flex-col items-center justify-center'>
+        <div className='flex items-center gap-2'>
+          <FaSpinner className='text-text-body animate-spin text-2xl' />
+          <span className='text-text-body text-xl'>{t('notes.loading')}</span>
         </div>
       </div>
     );
-  }
 
   if (error) {
     return (
