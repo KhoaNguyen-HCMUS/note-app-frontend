@@ -172,7 +172,7 @@ export default function TasksPage() {
             <p className='text-primary '>{t('tasks.subtitle')}</p>
           </div>
           <button
-            className='flex items-center gap-2 px-6 py-3 bg-button-bg text-button-text rounded-lg hover:bg-button-hover transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
+            className='cursor-pointer flex items-center gap-2 px-6 py-3 bg-button-bg text-button-text rounded-lg hover:bg-button-hover transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
             onClick={() => setShowModal(true)}
           >
             <FaPlus className='text-sm' />
@@ -223,7 +223,7 @@ export default function TasksPage() {
                 setSortBy(field);
                 setSortOrder(order);
               }}
-              className='px-4 py-3 border border-border-light rounded-lg '
+              className='bg-card-bg text-primary cursor-pointer px-4 py-3 border border-border-light rounded-lg '
             >
               <option value='createdAt-desc'>{t('tasks.sort.newest')}</option>
               <option value='createdAt-asc'>{t('tasks.sort.oldest')}</option>

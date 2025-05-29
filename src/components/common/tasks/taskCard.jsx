@@ -53,7 +53,7 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
 
   const isOverdue = (dueDate) => {
     if (!dueDate) return false;
-    return new Date(dueDate) < new Date() && task.status !== 'completed';
+    return new Date(dueDate) < new Date() && task.status !== 'completed' && task.status !== 'cancelled';
   };
 
   return (
