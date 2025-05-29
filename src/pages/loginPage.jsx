@@ -46,7 +46,7 @@ export default function LoginPage() {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', res.data.user.username);
       console.log('Google login response:', res);
-      navigate('/notes');
+      navigate('/dashboard');
     } catch (error) {
       toast.error('Google login failed');
       console.error('Google login error:', error);
@@ -148,8 +148,8 @@ export default function LoginPage() {
                         border: 'none',
                         outline: 'none',
                         boxShadow: 'none',
-                        margin: '0 auto', 
-                        display: 'flex', 
+                        margin: '0 auto',
+                        display: 'flex',
                         justifyContent: 'center',
                       },
                     }}
