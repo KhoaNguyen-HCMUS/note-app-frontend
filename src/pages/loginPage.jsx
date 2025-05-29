@@ -24,7 +24,7 @@ export default function LoginPage() {
       console.log('Login response:', res);
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', res.data.user.username);
-      navigate('/notes');
+      navigate('/dashboard');
     } catch (error) {
       if (error.response?.status === 400) {
         toast.error(t('login.errors.invalidCredentials'));
