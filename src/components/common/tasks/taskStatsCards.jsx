@@ -9,33 +9,25 @@ const TaskStatsCards = ({ stats }) => {
       title: t('tasks.stats.total'),
       value: stats.total,
       icon: FaTasks,
-      color: 'bg-blue-500',
-      bgColor: 'bg-blue-50',
-      textColor: 'text-blue-600',
+      color: 'text-blue-600',
     },
     {
       title: t('tasks.stats.pending'),
       value: stats.pending,
       icon: FaClock,
-      color: 'bg-yellow-500',
-      bgColor: 'bg-yellow-50',
-      textColor: 'text-yellow-600',
+      color: 'text-yellow-600',
     },
     {
       title: t('tasks.stats.inProgress'),
       value: stats.inProgress,
       icon: FaSpinner,
-      color: 'bg-indigo-500',
-      bgColor: 'bg-indigo-50',
-      textColor: 'text-indigo-600',
+      color: 'text-indigo-600',
     },
     {
       title: t('tasks.stats.completed'),
       value: stats.completed,
       icon: FaCheckCircle,
-      color: 'bg-green-500',
-      bgColor: 'bg-green-50',
-      textColor: 'text-green-600',
+      color: 'text-green-600',
     },
   ];
 
@@ -46,15 +38,15 @@ const TaskStatsCards = ({ stats }) => {
         return (
           <div
             key={index}
-            className={`${card.bgColor} rounded-xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-300`}
+            className='bg-card-bg border border-border-light rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1'
           >
             <div className='flex items-center justify-between'>
               <div>
-                <p className='text-gray-600 text-sm font-medium mb-1'>{card.title}</p>
-                <p className={`text-3xl font-bold ${card.textColor}`}>{card.value}</p>
+                <p className='text-sm font-medium text-text-body'>{card.title}</p>
+                <p className={`text-3xl font-bold ${card.color} mt-2`}>{card.value}</p>
               </div>
-              <div className={`${card.color} p-3 rounded-lg`}>
-                <IconComponent className='text-white text-xl' />
+              <div className={`p-4 rounded-full ${card.color} bg-opacity-20`}>
+                <IconComponent className={`text-2xl ${card.color}`} />
               </div>
             </div>
           </div>
