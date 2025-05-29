@@ -156,23 +156,23 @@ export default function TasksPage() {
 
   if (error) {
     return (
-      <div className='container mx-auto mt-8 px-4'>
-        <div className='bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg'>{error}</div>
+      <div className=' mx-auto mt-8 px-4'>
+        <div className=' border border-red-200 text-red-700 px-4 py-3 rounded-lg'>{error}</div>
       </div>
     );
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100'>
+    <div className='w-full min-h-screen bg-linear-(--gradient-primary) '>
       <div className='container mx-auto px-4 py-8'>
         {/* Header Section */}
         <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-4'>
           <div>
-            <h1 className='text-4xl font-bold text-gray-800 mb-2'>{t('tasks.title')}</h1>
-            <p className='text-gray-600'>{t('tasks.subtitle')}</p>
+            <h1 className='text-4xl font-bold text-primary mb-2'>{t('tasks.title')}</h1>
+            <p className='text-primary '>{t('tasks.subtitle')}</p>
           </div>
           <button
-            className='flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
+            className='flex items-center gap-2 px-6 py-3 bg-button-bg text-button-text rounded-lg hover:bg-button-hover transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
             onClick={() => setShowModal(true)}
           >
             <FaPlus className='text-sm' />
@@ -184,7 +184,7 @@ export default function TasksPage() {
         <TaskStatsCards stats={getTaskStats()} />
 
         {/* Search and Filters Section */}
-        <div className='bg-white rounded-xl shadow-lg p-6 mb-8'>
+        <div className='bg-card-bg rounded-xl shadow-lg p-6 mb-8 text-primary'>
           <div className='flex flex-col lg:flex-row gap-4 mb-4'>
             {/* Search Input */}
             <div className='flex-1 relative'>
@@ -193,12 +193,12 @@ export default function TasksPage() {
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
                 placeholder={t('tasks.searchPlaceholder')}
-                className='w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300'
+                className='w-full px-4 py-3 pl-12 border border-border-light rounded-lg transition-all duration-300'
               />
               {searching ? (
-                <FaSpinner className='absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 animate-spin' />
+                <FaSpinner className='absolute left-4 top-1/2 transform -translate-y-1/2 text-primary animate-spin' />
               ) : (
-                <FaSearch className='absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400' />
+                <FaSearch className='absolute left-4 top-1/2 transform -translate-y-1/2 text-primary' />
               )}
             </div>
 
@@ -207,8 +207,8 @@ export default function TasksPage() {
               onClick={() => setShowFilters(!showFilters)}
               className={`flex items-center gap-2 px-4 py-3 rounded-lg border transition-all duration-300 ${
                 showFilters
-                  ? 'bg-indigo-600 text-white border-indigo-600'
-                  : 'bg-gray-50 text-gray-700 border-gray-300 hover:bg-gray-100'
+                  ? 'bg-button-bg text-button-text border-button-border'
+                  : 'bg-card-bg text-primary border-border-light hover:bg-card-bg'
               }`}
             >
               <FaFilter className='text-sm' />
@@ -223,7 +223,7 @@ export default function TasksPage() {
                 setSortBy(field);
                 setSortOrder(order);
               }}
-              className='px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent'
+              className='px-4 py-3 border border-border-light rounded-lg '
             >
               <option value='createdAt-desc'>{t('tasks.sort.newest')}</option>
               <option value='createdAt-asc'>{t('tasks.sort.oldest')}</option>
