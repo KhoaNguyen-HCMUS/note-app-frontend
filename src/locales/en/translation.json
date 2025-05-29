@@ -217,24 +217,6 @@
     }
   },
 
-  "addTaskModal": {
-    "title": "Create New Task",
-    "buttons": {
-      "cancel": "Cancel",
-      "save": "Create Task",
-      "saving": "Creating..."
-    }
-  },
-
-  "editTaskModal": {
-    "title": "Edit Task",
-    "buttons": {
-      "cancel": "Cancel",
-      "save": "Update Task",
-      "updating": "Updating..."
-    }
-  },
-
   "tagFilter": {
     "title": "Filter by Tag",
     "allTags": "All"

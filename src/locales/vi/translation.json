@@ -6,6 +6,10 @@
   "confirm_password": "Xác nhận mật khẩu",
   "change_language": "Thay đổi ngôn ngữ",
   "AI assistant": "Trợ lý AI",
+  "footer": {
+    "copyright": "© {{year}} Note App. Tất cả quyền được bảo lưu.",
+    "madeBy": "Được tạo với ❤️ bởi Khoa Nguyen"
+  },
 
   "common": {
     "edit": "Chỉnh sửa",
@@ -46,8 +50,68 @@
     "task": "Công việc"
   },
 
+  "register": {
+    "title": "Đăng ký",
+    "username": "Tên người dùng",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "registerButton": "Đăng ký",
+    "registering": "Đang đăng ký...",
+    "alreadyHaveAccount": "Bạn đã có tài khoản?",
+    "loginHere": "Đăng nhập tại đây",
+    "errors": {
+      "passwordMatch": "Mật khẩu không khớp.",
+      "emailExists": "Email đã tồn tại, vui lòng kiểm tra lại dữ liệu.",
+      "serverError": "Lỗi máy chủ, vui lòng thử lại sau.",
+      "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
+    },
+    "success": "Đăng ký thành công! Vui lòng đăng nhập."
+  },
+
+  "login": {
+    "title": "Đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "loginButton": "Đăng nhập",
+    "loading": "Đang tải...",
+    "noAccount": "Bạn chưa có tài khoản?",
+    "register": "Đăng ký.",
+    "continueWith": "hoặc tiếp tục với",
+    "errors": {
+      "invalidCredentials": "Email hoặc mật khẩu không hợp lệ.",
+      "serverError": "Lỗi kết nối máy chủ.",
+      "googleError": "Đăng nhập Google thất bại"
+    }
+  },
+
+  "notes": {
+    "title": "Tất cả ghi chú",
+    "subtitle": "Tổ chức suy nghĩ và ý tưởng của bạn",
+    "addButton": "Thêm ghi chú",
+    "loading": "Đang tải...",
+    "searchPlaceholder": "Tìm kiếm ghi chú...",
+    "noResults": "Không tìm thấy ghi chú nào phù hợp với tìm kiếm của bạn",
+    "errors": {
+      "invalidFormat": "Định dạng dữ liệu nhận được không hợp lệ",
+      "fetchError": "Không thể tải ghi chú",
+      "addError": "Lỗi khi thêm ghi chú",
+      "updateError": "Lỗi khi cập nhật ghi chú",
+      "deleteError": "Lỗi khi xóa ghi chú"
+    },
+    "success": {
+      "noteCreated": "Tạo ghi chú thành công",
+      "noteUpdated": "Cập nhật ghi chú thành công",
+      "noteDeleted": "Xóa ghi chú thành công"
+    },
+    "emptyState": {
+      "title": "Không tìm thấy ghi chú",
+      "description": "Bắt đầu tạo ghi chú đầu tiên của bạn!"
+    }
+  },
+
   "tasks": {
-    "title": "Quản lý Công việc",
+    "title": "Quản lý công việc",
     "subtitle": "Luôn có tổ chức và năng suất",
     "addButton": "Thêm công việc",
     "loading": "Đang tải công việc...",
@@ -102,7 +166,7 @@
     },
 
     "errors": {
-      "invalidFormat": "Dữ liệu nhận được không hợp lệ",
+      "invalidFormat": "Định dạng dữ liệu nhận được không hợp lệ",
       "fetchError": "Không thể tải công việc",
       "addError": "Lỗi khi thêm công việc",
       "updateError": "Lỗi khi cập nhật công việc",
@@ -142,7 +206,7 @@
       },
       "tags": {
         "label": "Thẻ",
-        "placeholder": "Nhập thẻ (cách nhau bằng dấu phẩy)",
+        "placeholder": "Nhập thẻ (phân cách bằng dấu phẩy)",
         "example": "Ví dụ: công việc, khẩn cấp, họp"
       },
       "collaborators": {
@@ -162,6 +226,66 @@
     }
   },
 
+  "tagFilter": {
+    "title": "Lọc theo thẻ",
+    "allTags": "Tất cả"
+  },
+
+  "noteCard": {
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa ghi chú này?",
+    "deleteError": "Không thể xóa ghi chú. Vui lòng thử lại.",
+    "loading": "Đang xóa..."
+  },
+
+  "emptyNotes": {
+    "title": "Không tìm thấy ghi chú",
+    "description": "Bắt đầu bằng cách tạo ghi chú đầu tiên của bạn!"
+  },
+
+  "addNoteModal": {
+    "title": "Thêm ghi chú mới",
+    "form": {
+      "title": {
+        "label": "Tiêu đề",
+        "placeholder": "Nhập tiêu đề..."
+      },
+      "description": {
+        "label": "Mô tả",
+        "placeholder": "Nhập mô tả..."
+      },
+      "tags": {
+        "label": "Thẻ",
+        "placeholder": "Nhập thẻ (phân cách bằng dấu phẩy)...",
+        "example": "Ví dụ: cá nhân, quan trọng"
+      }
+    },
+    "buttons": {
+      "close": "Đóng",
+      "cancel": "Hủy",
+      "save": "Lưu"
+    }
+  },
+
+  "editNoteModal": {
+    "title": "Chỉnh sửa ghi chú",
+    "form": {
+      "title": "Tiêu đề",
+      "description": "Mô tả",
+      "tags": "Thẻ",
+      "tagsPlaceholder": "Nhập thẻ, phân cách bằng dấu phẩy",
+      "tagsExample": "Ví dụ: công việc, cá nhân, quan trọng"
+    },
+    "buttons": {
+      "cancel": "Hủy",
+      "save": "Lưu"
+    },
+    "errors": {
+      "updateError": "Lỗi khi cập nhật ghi chú. Vui lòng thử lại."
+    }
+  },
+
   "editTaskModal": {
     "title": "Chỉnh sửa công việc",
     "buttons": {
@@ -174,7 +298,7 @@
   "collaboratorModal": {
     "title": "Quản lý cộng tác viên",
     "addCollaborator": "Thêm cộng tác viên",
-    "searchUser": "Tìm người dùng...",
+    "searchUser": "Tìm kiếm người dùng...",
     "selectRole": "Chọn vai trò",
     "roles": {
       "viewer": "Người xem",
@@ -188,6 +312,6 @@
     },
     "remove": "Xóa",
     "add": "Thêm",
-    "noCollaborators": "Chưa có cộng tác viên nào"
+    "noCollaborators": "Chưa có cộng tác viên nào được thêm"
   }
 }
