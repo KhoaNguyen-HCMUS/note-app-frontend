@@ -1,14 +1,16 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/authContext';
+import { ThemeProvider } from './context/themeContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { toast, ToastContainer } from 'react-toastify';
+
 import LoginPage from './pages/loginPage';
 import RegisterPage from './pages/registerPage';
 import NotesPage from './pages/notesPage';
-import { AuthProvider } from './context/authContext';
-import { ThemeProvider } from './context/themeContext';
+import TasksPage from './pages/tasksPage';
 import Layout from './components/layout/layout';
 import PrivateRoute from './components/privateRoute';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
@@ -25,6 +27,14 @@ function App() {
                   element={
                     <PrivateRoute>
                       <NotesPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path='/tasks'
+                  element={
+                    <PrivateRoute>
+                      <TasksPage />
                     </PrivateRoute>
                   }
                 />

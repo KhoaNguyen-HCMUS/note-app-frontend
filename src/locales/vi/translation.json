@@ -4,116 +4,190 @@
   "email": "Email",
   "password": "Mật khẩu",
   "confirm_password": "Xác nhận mật khẩu",
-  "change_language": "Đổi ngôn ngữ",
+  "change_language": "Thay đổi ngôn ngữ",
   "AI assistant": "Trợ lý AI",
-  "footer": {
-    "copyright": "© {{year}} Note App. Đã đăng ký bản quyền.",
-    "madeBy": "Được tạo bởi Khoa Nguyen với ❤️"
-  },
-  "register": {
-    "title": "Đăng ký",
-    "username": "Tên đăng nhập",
-    "email": "Email",
-    "password": "Mật khẩu",
-    "confirmPassword": "Xác nhận mật khẩu",
-    "registerButton": "Đăng ký",
-    "registering": "Đang đăng ký...",
-    "alreadyHaveAccount": "Đã có tài khoản?",
-    "loginHere": "Đăng nhập tại đây",
-    "errors": {
-      "passwordMatch": "Mật khẩu không khớp.",
-      "emailExists": "Email đã tồn tại, vui lòng kiểm tra lại.",
-      "serverError": "Lỗi máy chủ, vui lòng thử lại sau.",
-      "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
-    },
-    "success": "Đăng ký thành công! Vui lòng đăng nhập."
+
+  "common": {
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "close": "Đóng",
+    "loading": "Đang tải...",
+    "search": "Tìm kiếm",
+    "filter": "Lọc",
+    "sort": "Sắp xếp",
+    "actions": "Hành động",
+    "confirm": "Xác nhận",
+    "yes": "Có",
+    "no": "Không"
   },
 
-  "notes": {
-    "title": "Tất Cả Ghi Chú",
-    "addButton": "Thêm Ghi Chú",
-    "loading": "Đang tải...",
+  "nav": {
+    "notes": "Ghi chú",
+    "tasks": "Công việc",
+    "dashboard": "Bảng điều khiển",
+    "profile": "Hồ sơ",
+    "logout": "Đăng xuất"
+  },
+
+  "dashboard": {
+    "welcome": "Chào mừng đến với Bảng điều khiển",
+    "subtitle": "Quản lý ghi chú và công việc hiệu quả",
+    "totalNotes": "Tổng ghi chú",
+    "totalTasks": "Tổng công việc",
+    "pendingTasks": "Công việc đang chờ",
+    "completedTasks": "Công việc hoàn thành",
+    "quickActions": "Thao tác nhanh",
+    "createNote": "Tạo ghi chú mới",
+    "createTask": "Tạo công việc mới",
+    "recentActivity": "Hoạt động gần đây",
+    "note": "Ghi chú",
+    "task": "Công việc"
+  },
+
+  "tasks": {
+    "title": "Quản lý Công việc",
+    "subtitle": "Luôn có tổ chức và năng suất",
+    "addButton": "Thêm công việc",
+    "loading": "Đang tải công việc...",
+    "searchPlaceholder": "Tìm kiếm công việc...",
+    "filter": "Bộ lọc",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa công việc này?",
+    "dueDate": "Hạn hoàn thành",
+    "owner": "Chủ sở hữu",
+    "collaborators": "Cộng tác viên",
+    "overdue": "Quá hạn",
+
+    "stats": {
+      "total": "Tổng công việc",
+      "pending": "Đang chờ",
+      "inProgress": "Đang thực hiện",
+      "completed": "Hoàn thành"
+    },
+
+    "status": {
+      "pending": "Đang chờ",
+      "inProgress": "Đang thực hiện",
+      "completed": "Hoàn thành",
+      "cancelled": "Đã hủy"
+    },
+
+    "priority": {
+      "low": "Thấp",
+      "medium": "Trung bình",
+      "high": "Cao"
+    },
+
+    "filters": {
+      "status": "Lọc theo trạng thái",
+      "priority": "Lọc theo độ ưu tiên",
+      "allStatuses": "Tất cả trạng thái",
+      "allPriorities": "Tất cả độ ưu tiên"
+    },
+
+    "sort": {
+      "newest": "Mới nhất trước",
+      "oldest": "Cũ nhất trước",
+      "dueDateAsc": "Hạn hoàn thành (Sớm nhất)",
+      "dueDateDesc": "Hạn hoàn thành (Muộn nhất)",
+      "titleAsc": "Tiêu đề (A-Z)",
+      "titleDesc": "Tiêu đề (Z-A)"
+    },
+
+    "empty": {
+      "title": "Không tìm thấy công việc",
+      "description": "Bắt đầu bằng cách tạo công việc đầu tiên của bạn!",
+      "tip": "💡 Mẹo: Sử dụng công việc để chia nhỏ dự án thành các phần dễ quản lý"
+    },
+
     "errors": {
-      "invalidFormat": "Định dạng dữ liệu không hợp lệ",
-      "fetchError": "Không thể tải ghi chú",
-      "addError": "Lỗi khi thêm ghi chú",
-      "updateError": "Lỗi khi cập nhật ghi chú"
+      "invalidFormat": "Dữ liệu nhận được không hợp lệ",
+      "fetchError": "Không thể tải công việc",
+      "addError": "Lỗi khi thêm công việc",
+      "updateError": "Lỗi khi cập nhật công việc",
+      "deleteError": "Lỗi khi xóa công việc",
+      "statusUpdateError": "Lỗi khi cập nhật trạng thái công việc"
     },
-    "emptyState": {
-      "title": "Không Tìm Thấy Ghi Chú",
-      "description": "Hãy bắt đầu tạo ghi chú đầu tiên!"
+
+    "success": {
+      "taskCreated": "Tạo công việc thành công",
+      "taskUpdated": "Cập nhật công việc thành công",
+      "taskDeleted": "Xóa công việc thành công",
+      "statusUpdated": "Cập nhật trạng thái thành công"
     },
-    "searchPlaceholder": "Tìm kiếm ghi chú...",
-    "noResults": "Không tìm thấy ghi chú nào phù hợp với tìm kiếm của bạn"
-  },
-  "login": {
-    "title": "Đăng nhập",
-    "email": "Email",
-    "password": "Mật khẩu",
-    "loginButton": "Đăng nhập",
-    "loading": "Đang tải...",
-    "noAccount": "Bạn chưa có tài khoản?",
-    "register": "Đăng ký.",
-    "continueWith": "hoặc tiếp tục với",
-    "errors": {
-      "invalidCredentials": "Email hoặc mật khẩu không đúng.",
-      "serverError": "Lỗi kết nối máy chủ.",
-      "googleError": "Đăng nhập Google thất bại"
-    }
-  },
-  "tagFilter": {
-    "title": "Lọc theo Nhãn",
-    "allTags": "Tất cả"
-  },
-  "noteCard": {
-    "edit": "Sửa",
-    "delete": "Xóa",
-    "confirmDelete": "Bạn có chắc chắn muốn xóa ghi chú này?",
-    "deleteError": "Không thể xóa ghi chú. Vui lòng thử lại.",
-    "loading": "Đang xóa..."
-  },
-  "emptyNotes": {
-    "title": "Không tìm thấy ghi chú nào",
-    "description": "Bắt đầu bằng cách tạo ghi chú đầu tiên!"
-  },
-  "editNoteModal": {
-    "title": "Sửa Ghi Chú",
-    "form": {
-      "title": "Tiêu đề",
-      "description": "Nội dung",
-      "tags": "Nhãn",
-      "tagsPlaceholder": "Nhập nhãn, phân cách bằng dấu phẩy",
-      "tagsExample": "Ví dụ: công việc, cá nhân, quan trọng"
-    },
-    "buttons": {
-      "cancel": "Hủy",
-      "save": "Lưu"
-    },
-    "errors": {
-      "updateError": "Lỗi khi cập nhật ghi chú. Vui lòng thử lại."
-    }
-  },
-  "addNoteModal": {
-    "title": "Thêm ghi chú mới",
+
     "form": {
       "title": {
-        "label": "Tiêu đề",
-        "placeholder": "Nhập tiêu đề..."
+        "label": "Tiêu đề công việc",
+        "placeholder": "Nhập tiêu đề công việc...",
+        "required": "Tiêu đề là bắt buộc"
       },
       "description": {
-        "label": "Nội dung",
-        "placeholder": "Nhập nội dung..."
+        "label": "Mô tả",
+        "placeholder": "Nhập mô tả công việc...",
+        "required": "Mô tả là bắt buộc"
+      },
+      "status": {
+        "label": "Trạng thái",
+        "placeholder": "Chọn trạng thái"
+      },
+      "priority": {
+        "label": "Độ ưu tiên",
+        "placeholder": "Chọn độ ưu tiên"
+      },
+      "dueDate": {
+        "label": "Hạn hoàn thành",
+        "placeholder": "Chọn hạn hoàn thành"
       },
       "tags": {
-        "label": "Nhãn",
-        "placeholder": "Nhập nhãn (phân cách bằng dấu phẩy)...",
-        "example": "Ví dụ: cá nhân, quan trọng"
+        "label": "Thẻ",
+        "placeholder": "Nhập thẻ (cách nhau bằng dấu phẩy)",
+        "example": "Ví dụ: công việc, khẩn cấp, họp"
+      },
+      "collaborators": {
+        "label": "Cộng tác viên",
+        "placeholder": "Thêm cộng tác viên...",
+        "role": "Vai trò"
       }
-    },
-    "buttons": {
-      "close": "Đóng",
-      "cancel": "Hủy",
-      "save": "Lưu"
     }
+  },
+
+  "addTaskModal": {
+    "title": "Tạo công việc mới",
+    "buttons": {
+      "cancel": "Hủy",
+      "save": "Tạo công việc",
+      "saving": "Đang tạo..."
+    }
+  },
+
+  "editTaskModal": {
+    "title": "Chỉnh sửa công việc",
+    "buttons": {
+      "cancel": "Hủy",
+      "save": "Cập nhật công việc",
+      "updating": "Đang cập nhật..."
+    }
+  },
+
+  "collaboratorModal": {
+    "title": "Quản lý cộng tác viên",
+    "addCollaborator": "Thêm cộng tác viên",
+    "searchUser": "Tìm người dùng...",
+    "selectRole": "Chọn vai trò",
+    "roles": {
+      "viewer": "Người xem",
+      "editor": "Người chỉnh sửa",
+      "admin": "Quản trị viên"
+    },
+    "permissions": {
+      "viewer": "Có thể xem công việc",
+      "editor": "Có thể chỉnh sửa công việc",
+      "admin": "Quyền truy cập đầy đủ"
+    },
+    "remove": "Xóa",
+    "add": "Thêm",
+    "noCollaborators": "Chưa có cộng tác viên nào"
   }
 }

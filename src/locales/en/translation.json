@@ -11,6 +11,45 @@
     "madeBy": "Made with ❤️ by Khoa Nguyen"
   },
 
+  "common": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "loading": "Loading...",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "actions": "Actions",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  },
+
+  "nav": {
+    "notes": "Notes",
+    "tasks": "Tasks",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+
+  "dashboard": {
+    "welcome": "Welcome to your Dashboard",
+    "subtitle": "Manage your notes and tasks efficiently",
+    "totalNotes": "Total Notes",
+    "totalTasks": "Total Tasks",
+    "pendingTasks": "Pending Tasks",
+    "completedTasks": "Completed Tasks",
+    "quickActions": "Quick Actions",
+    "createNote": "Create New Note",
+    "createTask": "Create New Task",
+    "recentActivity": "Recent Activity",
+    "note": "Note",
+    "task": "Task"
+  },
+
   "register": {
     "title": "Register",
     "username": "Username",
@@ -30,23 +69,6 @@
     "success": "Registration successful! Please log in."
   },
 
-  "notes": {
-    "title": "All Notes",
-    "addButton": "Add Note",
-    "loading": "Loading...",
-    "errors": {
-      "invalidFormat": "Invalid data format received",
-      "fetchError": "Failed to load notes",
-      "addError": "Error adding note",
-      "updateError": "Error updating note"
-    },
-    "emptyState": {
-      "title": "No Notes Found",
-      "description": "Start creating your first note!"
-    },
-    "searchPlaceholder": "Search notes...",
-    "noResults": "No notes found matching your search"
-  },
   "login": {
     "title": "Log in",
     "email": "Email",
@@ -62,10 +84,162 @@
       "googleError": "Google login failed"
     }
   },
+
+  "notes": {
+    "title": "All Notes",
+    "subtitle": "Organize your thoughts and ideas",
+    "addButton": "Add Note",
+    "loading": "Loading...",
+    "searchPlaceholder": "Search notes...",
+    "noResults": "No notes found matching your search",
+    "errors": {
+      "invalidFormat": "Invalid data format received",
+      "fetchError": "Failed to load notes",
+      "addError": "Error adding note",
+      "updateError": "Error updating note",
+      "deleteError": "Error deleting note"
+    },
+    "success": {
+      "noteCreated": "Note created successfully",
+      "noteUpdated": "Note updated successfully",
+      "noteDeleted": "Note deleted successfully"
+    },
+    "emptyState": {
+      "title": "No Notes Found",
+      "description": "Start creating your first note!"
+    }
+  },
+
+  "tasks": {
+    "title": "Task Management",
+    "subtitle": "Stay organized and productive",
+    "addButton": "Add Task",
+    "loading": "Loading tasks...",
+    "searchPlaceholder": "Search tasks...",
+    "filter": "Filters",
+    "confirmDelete": "Are you sure you want to delete this task?",
+    "dueDate": "Due Date",
+    "owner": "Owner",
+    "collaborators": "Collaborators",
+    "overdue": "Overdue",
+
+    "stats": {
+      "total": "Total Tasks",
+      "pending": "Pending",
+      "inProgress": "In Progress",
+      "completed": "Completed"
+    },
+
+    "status": {
+      "pending": "Pending",
+      "inProgress": "In Progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+
+    "filters": {
+      "status": "Filter by Status",
+      "priority": "Filter by Priority",
+      "allStatuses": "All Statuses",
+      "allPriorities": "All Priorities"
+    },
+
+    "sort": {
+      "newest": "Newest First",
+      "oldest": "Oldest First",
+      "dueDateAsc": "Due Date (Earliest)",
+      "dueDateDesc": "Due Date (Latest)",
+      "titleAsc": "Title (A-Z)",
+      "titleDesc": "Title (Z-A)"
+    },
+
+    "empty": {
+      "title": "No Tasks Found",
+      "description": "Get started by creating your first task!",
+      "tip": "💡 Tip: Use tasks to break down your projects into manageable pieces"
+    },
+
+    "errors": {
+      "invalidFormat": "Invalid data format received",
+      "fetchError": "Failed to load tasks",
+      "addError": "Error adding task",
+      "updateError": "Error updating task",
+      "deleteError": "Error deleting task",
+      "statusUpdateError": "Error updating task status"
+    },
+
+    "success": {
+      "taskCreated": "Task created successfully",
+      "taskUpdated": "Task updated successfully",
+      "taskDeleted": "Task deleted successfully",
+      "statusUpdated": "Task status updated successfully"
+    },
+
+    "form": {
+      "title": {
+        "label": "Task Title",
+        "placeholder": "Enter task title...",
+        "required": "Title is required"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter task description...",
+        "required": "Description is required"
+      },
+      "status": {
+        "label": "Status",
+        "placeholder": "Select status"
+      },
+      "priority": {
+        "label": "Priority",
+        "placeholder": "Select priority"
+      },
+      "dueDate": {
+        "label": "Due Date",
+        "placeholder": "Select due date"
+      },
+      "tags": {
+        "label": "Tags",
+        "placeholder": "Enter tags (comma separated)",
+        "example": "Example: work, urgent, meeting"
+      },
+      "collaborators": {
+        "label": "Collaborators",
+        "placeholder": "Add collaborators...",
+        "role": "Role"
+      }
+    }
+  },
+
+  "addTaskModal": {
+    "title": "Create New Task",
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Create Task",
+      "saving": "Creating..."
+    }
+  },
+
+  "editTaskModal": {
+    "title": "Edit Task",
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Update Task",
+      "updating": "Updating..."
+    }
+  },
+
   "tagFilter": {
     "title": "Filter by Tag",
     "allTags": "All"
   },
+
   "noteCard": {
     "edit": "Edit",
     "delete": "Delete",
@@ -73,27 +247,12 @@
     "deleteError": "Cannot delete note. Please try again.",
     "loading": "Deleting..."
   },
+
   "emptyNotes": {
     "title": "No notes found",
     "description": "Get started by creating your first note!"
   },
-  "editNoteModal": {
-    "title": "Edit Note",
-    "form": {
-      "title": "Title",
-      "description": "Description",
-      "tags": "Tags",
-      "tagsPlaceholder": "Enter tags, separate by commas",
-      "tagsExample": "For example: work, individual, important"
-    },
-    "buttons": {
-      "cancel": "Cancel",
-      "save": "Save"
-    },
-    "errors": {
-      "updateError": "Error updating note. Please try again."
-    }
-  },
+
   "addNoteModal": {
     "title": "Add new note",
     "form": {
@@ -116,5 +275,61 @@
       "cancel": "Cancel",
       "save": "Save"
     }
+  },
+
+  "editNoteModal": {
+    "title": "Edit Note",
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "tags": "Tags",
+      "tagsPlaceholder": "Enter tags, separate by commas",
+      "tagsExample": "For example: work, individual, important"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "errors": {
+      "updateError": "Error updating note. Please try again."
+    }
+  },
+
+  "addTaskModal": {
+    "title": "Create New Task",
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Create Task",
+      "saving": "Creating..."
+    }
+  },
+
+  "editTaskModal": {
+    "title": "Edit Task",
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Update Task",
+      "updating": "Updating..."
+    }
+  },
+
+  "collaboratorModal": {
+    "title": "Manage Collaborators",
+    "addCollaborator": "Add Collaborator",
+    "searchUser": "Search users...",
+    "selectRole": "Select role",
+    "roles": {
+      "viewer": "Viewer",
+      "editor": "Editor",
+      "admin": "Admin"
+    },
+    "permissions": {
+      "viewer": "Can view tasks",
+      "editor": "Can edit tasks",
+      "admin": "Full access"
+    },
+    "remove": "Remove",
+    "add": "Add",
+    "noCollaborators": "No collaborators added yet"
   }
 }
