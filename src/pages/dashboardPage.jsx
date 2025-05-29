@@ -16,6 +16,9 @@ import {
   FaSpinner,
 } from 'react-icons/fa';
 import axiosClient from '../api/axiosClient';
+import { toast } from 'react-toastify';
+import AddNoteModal from '../components/common/notes/addNoteModal';
+import AddTaskModal from '../components/common/tasks/addTaskModal';
 
 const DashboardPage = () => {
   const [stats, setStats] = useState({
@@ -30,6 +33,8 @@ const DashboardPage = () => {
   const [recentTasks, setRecentTasks] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showAddNoteModal, setShowAddNoteModal] = useState(false);
+  const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -99,6 +104,32 @@ const DashboardPage = () => {
       console.error('Error fetching dashboard data:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Handle Add Note
+  const handleAddNote = async (noteData) => {
+    try {
+      await axiosClient.post('/notes', noteData);
+      setShowAddNoteModal(false);
+      toast.success(t('notes.success.noteCreated'));
+      await fetchDashboardData(); // Refresh data
+    } catch (err) {
+      console.error('Error adding note:', err);
+      toast.error(t('notes.errors.addError'));
+    }
+  };
+
+  // Handle Add Task
+  const handleAddTask = async (taskData) => {
+    try {
+      await axiosClient.post('/tasks', taskData);
+      setShowAddTaskModal(false);
+      toast.success(t('tasks.success.taskCreated'));
+      await fetchDashboardData(); // Refresh data
+    } catch (err) {
+      console.error('Error adding task:', err);
+      toast.error(t('tasks.errors.addError'));
     }
   };
 
@@ -263,16 +294,20 @@ const DashboardPage = () => {
             title={t('dashboard.createNote')}
             description={t('dashboard.createNoteDesc')}
             color='text-blue-600'
-            onClick={() => navigate('/notes')}
+            onClick={() => setShowAddNoteModal(true)}
           />
           <QuickActionCard
             icon={FaPlus}
             title={t('dashboard.createTask')}
             description={t('dashboard.createTaskDesc')}
             color='text-indigo-600'
-            onClick={() => navigate('/tasks')}
+            onClick={() => setShowAddTaskModal(true)}
           />
         </div>
+
+        <AddNoteModal show={showAddNoteModal} onClose={() => setShowAddNoteModal(false)} onSubmit={handleAddNote} />
+
+        <AddTaskModal show={showAddTaskModal} onClose={() => setShowAddTaskModal(false)} onSubmit={handleAddTask} />
 
         {/* Content Grid */}
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
