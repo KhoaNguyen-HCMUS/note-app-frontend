@@ -57,13 +57,13 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
   };
 
   return (
-    <div className='bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100'>
+    <div className='bg-card-bg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-border-light'>
       <div className='p-6'>
         {/* Header */}
         <div className='flex justify-between items-start mb-4'>
           <div className='flex-1 mr-4'>
-            <h3 className='text-xl font-semibold text-gray-800 mb-2 line-clamp-2'>{task.title}</h3>
-            <p className='text-gray-600 text-sm line-clamp-3 mb-3'>{task.description}</p>
+            <h3 className='text-xl font-semibold text-text-header mb-2 line-clamp-2'>{task.title}</h3>
+            <p className='text-text-body text-sm line-clamp-3 mb-3'>{task.description}</p>
           </div>
 
           {/* Priority Flag */}
@@ -93,7 +93,7 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
         {task.dueDate && (
           <div
             className={`flex items-center gap-2 mb-3 text-sm ${
-              isOverdue(task.dueDate) ? 'text-red-600' : 'text-gray-600'
+              isOverdue(task.dueDate) ? 'text-red-600' : 'text-text-header'
             }`}
           >
             <FaClock className='text-xs' />
@@ -105,7 +105,7 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
         )}
 
         {/* Owner */}
-        <div className='flex items-center gap-2 mb-3 text-sm text-gray-600'>
+        <div className='flex items-center gap-2 mb-3 text-sm text-text-header'>
           <FaUser className='text-xs' />
           <span>
             {t('tasks.owner')}: {task.user?.username || 'Unknown'}
@@ -114,7 +114,7 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
 
         {/* Collaborators */}
         {task.collaborators && task.collaborators.length > 0 && (
-          <div className='flex items-center gap-2 mb-4 text-sm text-gray-600'>
+          <div className='flex items-center gap-2 mb-4 text-sm text-text-header'>
             <FaUsers className='text-xs' />
             <span>
               {task.collaborators.length} {t('tasks.collaborators')}
@@ -126,7 +126,10 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
         {task.tags && task.tags.length > 0 && (
           <div className='flex flex-wrap gap-1 mb-4'>
             {task.tags.map((tag, index) => (
-              <span key={index} className='px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full'>
+              <span
+                key={index}
+                className='px-2 py-1 bg-indigo-100 dark:bg-gray-600/50 text-primary text-xs rounded-full'
+              >
                 #{tag}
               </span>
             ))}
@@ -134,10 +137,10 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
         )}
 
         {/* Actions */}
-        <div className='flex justify-end gap-2 pt-4 border-t border-gray-100'>
+        <div className='flex justify-end gap-2 pt-4 border-t border-border-light'>
           <button
             onClick={() => onEdit(task)}
-            className='flex items-center gap-1 px-3 py-2 text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 rounded-lg transition-all duration-300'
+            className='cursor-pointer flex items-center px-3 py-1.5 text-button-bg border button-bg rounded hover:bg-button-hover-light transition-colors disabled:opacity-50'
           >
             <FaEdit className='text-xs' />
             <span className='text-sm'>{t('common.edit')}</span>
@@ -146,7 +149,7 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
           <button
             onClick={handleDelete}
             disabled={loading}
-            className='flex items-center gap-1 px-3 py-2 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-all duration-300 disabled:opacity-50'
+            className='cursor-pointer flex items-center px-3 py-1.5 text-button-red-bg  border border-button-red-bg  rounded hover:bg-button-red-hover-light transition-colors disabled:opacity-50'
           >
             <FaTrash className='text-xs' />
             <span className='text-sm'>{t('common.delete')}</span>

@@ -19,14 +19,14 @@ const TaskFilters = ({ statusFilter, priorityFilter, onStatusChange, onPriorityC
   ];
 
   return (
-    <div className='border-t border-gray-200 pt-4 mt-4'>
+    <div className='border-t border-border-lgiht pt-4 mt-4'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
         <div>
-          <label className='block text-sm font-medium text-gray-700 mb-2'>{t('tasks.filters.status')}</label>
+          <label className='block text-sm font-medium text-primary mb-2'>{t('tasks.filters.status')}</label>
           <select
             value={statusFilter}
             onChange={(e) => onStatusChange(e.target.value)}
-            className='w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent'
+            className='cursor-pointer bg-card-bg text-primary w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent'
           >
             {statusOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -37,11 +37,11 @@ const TaskFilters = ({ statusFilter, priorityFilter, onStatusChange, onPriorityC
         </div>
 
         <div>
-          <label className='block text-sm font-medium text-gray-700 mb-2'>{t('tasks.filters.priority')}</label>
+          <label className='block text-sm font-medium text-primary mb-2'>{t('tasks.filters.priority')}</label>
           <select
             value={priorityFilter}
             onChange={(e) => onPriorityChange(e.target.value)}
-            className='w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent'
+            className='cursor-pointer bg-card-bg text-primary w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent'
           >
             {priorityOptions.map((option) => (
               <option key={option.value} value={option.value}>
