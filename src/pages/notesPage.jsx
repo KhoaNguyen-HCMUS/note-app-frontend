@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { FaPlus, FaSearch, FaSpinner } from 'react-icons/fa';
+import { FaPlus, FaSearch, FaSpinner, FaArrowLeft } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useDebounce } from '../hooks/useDebounce';
 
 import NoteCard from '../components/common/notes/noteCard.jsx';
@@ -27,6 +27,7 @@ export default function NotesPage() {
   const [selectedNote, setSelectedNote] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const fetchNotes = async () => {
     if (initialLoading || tagFilter) setInitialLoading(true);
@@ -122,10 +123,21 @@ export default function NotesPage() {
   return (
     <div className='w-full min-h-screen bg-linear-(--gradient-primary) '>
       <div className='container mx-auto px-4 py-8 '>
-        <div className='flex justify-between items-center mb-6'>
-          <h2 className='text-2xl font-bold text-primary '>{t('notes.title')}</h2>
+        <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4'>
+          <div className='flex items-center gap-4'>
+            <button
+              onClick={() => navigate('/dashboard')}
+              className='cursor-pointer flex items-center gap-2 px-3 py-2 text-text-body hover:text-primary transition-colors'
+              title={t('nav.dashboard')}
+            >
+              <FaArrowLeft className='text-sm' />
+              <span className='hidden sm:inline'>{t('nav.dashboard')}</span>
+            </button>
+          </div>
+
+          <h2 className='text-2xl font-bold text-primary'>{t('notes.title')}</h2>
           <button
-            className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg  text-button-text  rounded-lg hover:bg-button-hover transition-colors'
+            className='cursor-pointer flex items-center gap-2 px-4 py-2 bg-button-bg text-button-text rounded-lg hover:bg-button-hover transition-colors'
             onClick={() => setShowModal(true)}
           >
             <FaPlus className='text-sm' /> {t('notes.addButton')}

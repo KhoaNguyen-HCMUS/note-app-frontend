@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { FaPlus, FaSearch, FaSpinner, FaFilter, FaSort } from 'react-icons/fa';
+import { FaPlus, FaSearch, FaSpinner, FaFilter, FaArrowLeft } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useDebounce } from '../hooks/useDebounce';
 
 import TaskCard from '../components/common/tasks/taskCard.jsx';
@@ -32,6 +32,7 @@ export default function TasksPage() {
   const [selectedTask, setSelectedTask] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const fetchTasks = async () => {
     if (initialLoading || statusFilter || priorityFilter) setInitialLoading(true);
@@ -166,11 +167,18 @@ export default function TasksPage() {
     <div className='w-full min-h-screen bg-linear-(--gradient-primary) '>
       <div className='container mx-auto px-4 py-8'>
         {/* Header Section */}
-        <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-4'>
-          <div>
-            <h1 className='text-4xl font-bold text-primary mb-2'>{t('tasks.title')}</h1>
-            <p className='text-primary '>{t('tasks.subtitle')}</p>
+        <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4'>
+          <div className='flex items-center gap-4'>
+            <button
+              onClick={() => navigate('/dashboard')}
+              className='cursor-pointer flex items-center gap-2 px-3 py-2 text-text-body hover:text-primary transition-colors'
+              title={t('nav.dashboard')}
+            >
+              <FaArrowLeft className='text-sm' />
+              <span className='hidden sm:inline'>{t('nav.dashboard')}</span>
+            </button>
           </div>
+          <h1 className='text-4xl font-bold text-primary mb-2'>{t('tasks.title')}</h1>
           <button
             className='cursor-pointer flex items-center gap-2 px-6 py-3 bg-button-bg text-button-text rounded-lg hover:bg-button-hover transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
             onClick={() => setShowModal(true)}
