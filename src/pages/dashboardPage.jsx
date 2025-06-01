@@ -64,7 +64,7 @@ const DashboardPage = () => {
       const overdueTasks = tasks.filter((task) => {
         if (!task.dueDate) return false;
         const dueDate = new Date(task.dueDate);
-        return dueDate < today && task.status !== 'completed';
+        return dueDate < today && task.status !== 'completed' && task.status !== 'cancelled';
       }).length;
 
       const todayTasks = tasks.filter((task) => {
