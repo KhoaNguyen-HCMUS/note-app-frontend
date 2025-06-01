@@ -166,9 +166,8 @@ export default function NotesPage() {
               className='w-full px-4 py-2 pl-10 border border-border-light rounded-lg text-primary bg-card-bg'
             />
             {searching ? (
-              <div className='absolute left-3 top-1/2 transform -translate-y-1/2 animate-spin'>
-                <FaSpinner className='text-text-body' />
-                <div className='w-4 h-4 border-2 border-primary border-t-transparent rounded-full'></div>
+              <div className='absolute left-3 top-1/2 transform -translate-y-1/2 '>
+                <FaSpinner className='text-text-body animate-spin' />
               </div>
             ) : (
               <FaSearch className='absolute left-3 top-1/2 transform -translate-y-1/2 text-text-body' />
