@@ -212,7 +212,7 @@ export default function TasksPage() {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-4 py-3 rounded-lg border transition-all duration-300 ${
+              className={`cursor-pointer flex items-center gap-2 px-4 py-3 rounded-lg border transition-all duration-300 ${
                 showFilters
                   ? 'bg-button-bg text-button-text border-button-border'
                   : 'bg-card-bg text-primary border-border-light hover:bg-card-bg'
