@@ -320,7 +320,7 @@ const DashboardPage = () => {
               </h2>
               <button
                 onClick={() => navigate('/notes')}
-                className='text-button-bg hover:text-button-hover text-sm font-medium transition-colors'
+                className='cursor-pointer text-button-bg hover:text-button-hover text-sm font-medium transition-colors'
               >
                 {t('dashboard.viewAll')}
               </button>
@@ -364,7 +364,7 @@ const DashboardPage = () => {
               </h2>
               <button
                 onClick={() => navigate('/tasks')}
-                className='text-button-bg hover:text-button-hover text-sm font-medium transition-colors'
+                className='cursor-pointer text-button-bg hover:text-button-hover text-sm font-medium transition-colors'
               >
                 {t('dashboard.viewAll')}
               </button>
@@ -406,7 +406,7 @@ const DashboardPage = () => {
               </h2>
               <button
                 onClick={() => navigate('/tasks')}
-                className='text-button-bg hover:text-button-hover text-sm font-medium transition-colors'
+                className='cursor-pointer text-button-bg hover:text-button-hover text-sm font-medium transition-colors'
               >
                 {t('dashboard.viewAll')}
               </button>
