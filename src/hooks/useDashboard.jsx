@@ -1,4 +1,3 @@
-// src/hooks/useDashboard.js
 import { useState, useEffect } from 'react';
 import { DashboardService } from '../services/dashboardService';
 import { toast } from 'react-toastify';

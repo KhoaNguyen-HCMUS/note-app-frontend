@@ -65,12 +65,12 @@ export class TaskStatsCalculator {
   getAllStats() {
     return {
       total: this.getTotalTasks(),
-      pending: this.getPendingTasks(),
-      completed: this.getCompletedTasks(),
+      pendingTasks: this.getPendingTasks(),
+      completedTasks: this.getCompletedTasks(),
       inProgress: this.getInProgressTasks(),
       cancelled: this.getCancelledTasks(),
-      overdue: this.getOverdueTasks(),
-      today: this.getTodayTasks(),
+      overdueTasks: this.getOverdueTasks(),
+      todayTasks: this.getTodayTasks(),
       upcoming: this.getUpcomingTasks().length,
     };
   }
