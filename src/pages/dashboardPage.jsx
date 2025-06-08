@@ -1,18 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useDashboard } from '../hooks/useDashboard';
+
 import {
   FaStickyNote,
   FaTasks,
   FaPlus,
-  FaChartLine,
   FaClock,
   FaCheckCircle,
   FaExclamationCircle,
   FaCalendarAlt,
-  FaUser,
-  FaArrowRight,
-  FaSpinner,
 } from 'react-icons/fa';
 import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
@@ -26,112 +24,32 @@ import RecentTasks from '../components/common/dashboard/recentTasks';
 import UpcomingTasks from '../components/common/dashboard/upcomingTasks';
 
 const DashboardPage = () => {
-  const [stats, setStats] = useState({
-    totalNotes: 0,
-    totalTasks: 0,
-    pendingTasks: 0,
-    completedTasks: 0,
-    overdueTasks: 0,
-    todayTasks: 0,
-  });
-  const [recentNotes, setRecentNotes] = useState([]);
-  const [recentTasks, setRecentTasks] = useState([]);
-  const [upcomingTasks, setUpcomingTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [showAddNoteModal, setShowAddNoteModal] = useState(false);
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchDashboardData();
-  }, []);
+  const { stats, recentNotes, recentTasks, upcomingTasks, loading, refetch } = useDashboard();
 
-  const fetchDashboardData = async () => {
-    try {
-      setLoading(true);
-
-      // Fetch notes and tasks data
-      const [notesResponse, tasksResponse] = await Promise.all([axiosClient.get('/notes'), axiosClient.get('/tasks')]);
-
-      const notes = notesResponse.data || [];
-      const tasks = tasksResponse.data || [];
-
-      // Calculate stats
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-
-      const pendingTasks = tasks.filter((task) => task.status === 'pending').length;
-      const completedTasks = tasks.filter((task) => task.status === 'completed').length;
-      const overdueTasks = tasks.filter((task) => {
-        if (!task.dueDate) return false;
-        const dueDate = new Date(task.dueDate);
-        return dueDate < today && task.status !== 'completed' && task.status !== 'cancelled';
-      }).length;
-
-      const todayTasks = tasks.filter((task) => {
-        if (!task.dueDate) return false;
-        const dueDate = new Date(task.dueDate);
-        return dueDate >= today && dueDate < tomorrow;
-      }).length;
-
-      setStats({
-        totalNotes: notes.length,
-        totalTasks: tasks.length,
-        pendingTasks,
-        completedTasks,
-        overdueTasks,
-        todayTasks,
-      });
-
-      // Get recent items (last 5)
-      setRecentNotes(notes.slice(0, 5));
-      setRecentTasks(tasks.slice(0, 5));
-
-      // Get upcoming tasks (next 7 days)
-      const nextWeek = new Date(today);
-      nextWeek.setDate(nextWeek.getDate() + 7);
-
-      const upcoming = tasks
-        .filter((task) => {
-          if (!task.dueDate || task.status === 'completed') return false;
-          const dueDate = new Date(task.dueDate);
-          return dueDate >= today && dueDate <= nextWeek;
-        })
-        .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
-        .slice(0, 5);
-
-      setUpcomingTasks(upcoming);
-    } catch (error) {
-      console.error('Error fetching dashboard data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Handle Add Note
   const handleAddNote = async (noteData) => {
     try {
       await axiosClient.post('/notes', noteData);
       setShowAddNoteModal(false);
       toast.success(t('notes.success.noteCreated'));
-      await fetchDashboardData(); // Refresh data
+      await refetch();
     } catch (err) {
       console.error('Error adding note:', err);
       toast.error(t('notes.errors.addError'));
     }
   };
 
-  // Handle Add Task
   const handleAddTask = async (taskData) => {
     try {
       await axiosClient.post('/tasks', taskData);
       setShowAddTaskModal(false);
       toast.success(t('tasks.success.taskCreated'));
-      await fetchDashboardData(); // Refresh data
+      await refetch();
     } catch (err) {
       console.error('Error adding task:', err);
       toast.error(t('tasks.errors.addError'));
