@@ -11,6 +11,7 @@ import axiosClient from '../api/axiosClient';
 import EmptyNotes from '../components/common/notes/emptyNotes.jsx';
 import AddNoteModal from '../components/common/notes/addNoteModal.jsx';
 import EditNoteModal from '../components/common/notes/editNoteModal.jsx';
+import LoadingSpinner from '../components/common/loadingSpinner.jsx';
 
 export default function NotesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -106,15 +107,7 @@ export default function NotesPage() {
 
   const filteredNotes = tagFilter ? (notes || []).filter((note) => note.tags.includes(tagFilter)) : notes || [];
 
-  if (initialLoading)
-    return (
-      <div className='bg-linear-(--gradient-primary) min-h-screen flex flex-col items-center justify-center'>
-        <div className='flex items-center gap-2'>
-          <FaSpinner className='text-text-body animate-spin text-2xl' />
-          <span className='text-text-body text-xl'>{t('notes.loading')}</span>
-        </div>
-      </div>
-    );
+  if (initialLoading) return <LoadingSpinner />;
   if (error) return <div className='container mt-4 text-danger'>{error}</div>;
 
   const allTags = notes.reduce((tags, note) => {

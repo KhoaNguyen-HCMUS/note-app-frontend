@@ -12,6 +12,7 @@ import EmptyTasks from '../components/common/tasks/emptyTasks';
 import AddTaskModal from '../components/common/tasks/addTaskModal';
 import EditTaskModal from '../components/common/tasks/editTaskModal';
 import TaskStatsCards from '../components/common/tasks/taskStatsCards';
+import LoadingSpinner from '../components/common/loadingSpinner.jsx';
 
 export default function TasksPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -144,15 +145,7 @@ export default function TasksPage() {
     };
   };
 
-  if (initialLoading)
-    return (
-      <div className='bg-linear-(--gradient-primary) min-h-screen flex flex-col items-center justify-center'>
-        <div className='flex items-center gap-2'>
-          <FaSpinner className='text-text-body animate-spin text-2xl' />
-          <span className='text-text-body text-xl'>{t('notes.loading')}</span>
-        </div>
-      </div>
-    );
+  if (initialLoading) return <LoadingSpinner />;
 
   if (error) {
     return (
