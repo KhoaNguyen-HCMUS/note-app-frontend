@@ -22,6 +22,7 @@ import LoadingSpinner from '../components/common/loadingSpinner';
 import StatCard from '../components/common/dashboard/statCard';
 import QuickActionCard from '../components/common/dashboard/quickActionCard';
 import RecentNotes from '../components/common/dashboard/recentNotes';
+import RecentTasks from '../components/common/dashboard/recentTasks';
 
 const DashboardPage = () => {
   const [stats, setStats] = useState({
@@ -162,21 +163,6 @@ const DashboardPage = () => {
     }
   };
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'completed':
-        return 'text-green-600';
-      case 'in-progress':
-        return 'text-blue-600';
-      case 'pending':
-        return 'text-yellow-600';
-      case 'cancelled':
-        return 'text-red-600';
-      default:
-        return 'text-text-body';
-    }
-  };
-
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -272,47 +258,7 @@ const DashboardPage = () => {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
           <RecentNotes recentNotes={recentNotes} />
 
-          {/* Recent Tasks */}
-          <div className='bg-card-bg border border-border-light rounded-xl p-6'>
-            <div className='flex items-center justify-between mb-6'>
-              <h2 className='text-xl font-semibold text-primary flex items-center'>
-                <FaTasks className='mr-2 text-indigo-600' />
-                {t('dashboard.recentTasks')}
-              </h2>
-              <button
-                onClick={() => navigate('/tasks')}
-                className='cursor-pointer text-button-bg hover:text-button-hover text-sm font-medium transition-colors'
-              >
-                {t('dashboard.viewAll')}
-              </button>
-            </div>
-            <div className='space-y-3'>
-              {recentTasks.length > 0 ? (
-                recentTasks.map((task) => (
-                  <div
-                    key={task._id}
-                    className='p-3 bg-card-bg border border-border-light rounded-lg hover:shadow-md transition-all cursor-pointer'
-                  >
-                    <h3 className='font-medium text-primary truncate'>{task.title}</h3>
-                    <p className='text-sm text-text-body mt-1 line-clamp-2'>{task.description}</p>
-                    <div className='flex items-center justify-between mt-2'>
-                      <div className='flex items-center gap-2'>
-                        <span className={`px-2 py-1 text-xs rounded ${getStatusColor(task.status)} bg-opacity-20`}>
-                          {t(`tasks.status.${task.status}`)}
-                        </span>
-                        <span className={`px-2 py-1 text-xs rounded ${getPriorityColor(task.priority)} bg-opacity-20`}>
-                          {t(`tasks.priority.${task.priority}`)}
-                        </span>
-                      </div>
-                      {task.dueDate && <span className='text-xs text-text-body'>{formatDate(task.dueDate)}</span>}
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p className='text-text-body text-center py-8'>{t('dashboard.noRecentTasks')}</p>
-              )}
-            </div>
-          </div>
+          <RecentTasks recentTasks={recentTasks} />
 
           {/* Upcoming Tasks */}
           <div className='bg-card-bg border border-border-light rounded-xl p-6'>
