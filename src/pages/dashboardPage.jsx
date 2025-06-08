@@ -32,10 +32,6 @@ const DashboardPage = () => {
 
   const { stats, recentNotes, recentTasks, upcomingTasks, loading, refetch } = useDashboard();
 
-  console.log('Dashboard stats:', stats);
-  console.log('Recent Notes:', recentNotes);
-  console.log('Recent Tasks:', recentTasks);
-
   const handleAddNote = async (noteData) => {
     try {
       await axiosClient.post('/notes', noteData);
