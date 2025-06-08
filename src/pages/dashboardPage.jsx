@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -21,6 +20,7 @@ import AddNoteModal from '../components/common/notes/addNoteModal';
 import AddTaskModal from '../components/common/tasks/addTaskModal';
 import LoadingSpinner from '../components/common/loadingSpinner';
 import StatCard from '../components/common/dashboard/statCard';
+import QuickActionCard from '../components/common/dashboard/quickActionCard';
 
 const DashboardPage = () => {
   const [stats, setStats] = useState({
@@ -134,26 +134,6 @@ const DashboardPage = () => {
       toast.error(t('tasks.errors.addError'));
     }
   };
-
-  const QuickActionCard = ({ icon: Icon, title, description, color, onClick }) => (
-    <div
-      className='bg-card-bg border border-border-light rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 hover:border-indigo-300'
-      onClick={onClick}
-    >
-      <div className='flex items-center mb-4'>
-        <div className={`p-3 rounded-full ${color} bg-opacity-20 mr-4`}>
-          <Icon className={`text-xl ${color}`} />
-        </div>
-        <div>
-          <h3 className='font-semibold text-primary'>{title}</h3>
-          <p className='text-sm text-text-body'>{description}</p>
-        </div>
-      </div>
-      <div className='flex items-center text-button-bg text-sm font-medium'>
-        {t('dashboard.quickActions')} <FaArrowRight className='ml-2' />
-      </div>
-    </div>
-  );
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
