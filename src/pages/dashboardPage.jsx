@@ -20,6 +20,7 @@ import { toast } from 'react-toastify';
 import AddNoteModal from '../components/common/notes/addNoteModal';
 import AddTaskModal from '../components/common/tasks/addTaskModal';
 import LoadingSpinner from '../components/common/loadingSpinner';
+import StatCard from '../components/common/dashboard/statCard';
 
 const DashboardPage = () => {
   const [stats, setStats] = useState({
@@ -133,23 +134,6 @@ const DashboardPage = () => {
       toast.error(t('tasks.errors.addError'));
     }
   };
-
-  const StatCard = ({ icon: Icon, title, value, color, bgColor, onClick }) => (
-    <div
-      className={`${bgColor} border border-border-light rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}
-      onClick={onClick}
-    >
-      <div className='flex items-center justify-between'>
-        <div>
-          <p className='text-sm font-medium text-text-body'>{title}</p>
-          <p className={`text-3xl font-bold ${color} mt-2`}>{value}</p>
-        </div>
-        <div className={`p-4 rounded-full ${color} bg-opacity-20`}>
-          <Icon className={`text-2xl ${color}`} />
-        </div>
-      </div>
-    </div>
-  );
 
   const QuickActionCard = ({ icon: Icon, title, description, color, onClick }) => (
     <div
