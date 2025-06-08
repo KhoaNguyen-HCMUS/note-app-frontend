@@ -1,4 +1,3 @@
-// src/components/dashboard/QuickActionCard.jsx
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
