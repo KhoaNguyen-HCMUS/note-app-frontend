@@ -116,13 +116,13 @@
     "stats": {
       "total": "Tổng công việc",
       "pending": "Đang chờ",
-      "inProgress": "Đang thực hiện",
+      "in-progress": "Đang thực hiện",
       "completed": "Hoàn thành"
     },
 
     "status": {
       "pending": "Đang chờ",
-      "inProgress": "Đang thực hiện",
+      "in-progress": "Đang thực hiện",
       "completed": "Hoàn thành",
       "cancelled": "Đã hủy"
     },

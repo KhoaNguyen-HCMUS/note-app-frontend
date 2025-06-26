@@ -35,7 +35,6 @@
     "logout": "Logout"
   },
 
-
   "register": {
     "title": "Register",
     "username": "Username",
@@ -118,13 +117,13 @@
     "stats": {
       "total": "Total Tasks",
       "pending": "Pending",
-      "inProgress": "In Progress",
+      "in-progress": "In Progress",
       "completed": "Completed"
     },
 
     "status": {
       "pending": "Pending",
-      "inProgress": "In Progress",
+      "in-progress": "In Progress",
       "completed": "Completed",
       "cancelled": "Cancelled"
     },
