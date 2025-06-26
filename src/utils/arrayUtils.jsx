@@ -1,10 +1,8 @@
 export const arrayUtils = {
-  // Lấy items mới nhất
   getRecent: (array, count = 5) => {
     return array.slice(0, count);
   },
 
-  // Sort theo ngày tạo
   sortByCreatedAt: (array, order = 'desc') => {
     return [...array].sort((a, b) => {
       const dateA = new Date(a.createdAt);
@@ -13,7 +11,6 @@ export const arrayUtils = {
     });
   },
 
-  // Sort theo ngày due
   sortByDueDate: (array, order = 'asc') => {
     return [...array].sort((a, b) => {
       if (!a.dueDate && !b.dueDate) return 0;
@@ -26,7 +23,6 @@ export const arrayUtils = {
     });
   },
 
-  // Filter theo nhiều điều kiện
   filterByMultipleConditions: (array, conditions) => {
     return array.filter((item) => {
       return Object.entries(conditions).every(([key, value]) => {
@@ -36,7 +32,6 @@ export const arrayUtils = {
     });
   },
 
-  // Group theo key
   groupBy: (array, key) => {
     return array.reduce((groups, item) => {
       const groupKey = item[key];

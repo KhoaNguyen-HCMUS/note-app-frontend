@@ -56,4 +56,16 @@ export class DashboardService {
       upcomingTasks,
     };
   }
+
+  static getTasksByStatus(tasks) {
+    return arrayUtils.groupBy(tasks, 'status');
+  }
+
+  static getTasksByPriority(tasks) {
+    return arrayUtils.groupBy(tasks, 'priority');
+  }
+
+  static getFilteredTasks(tasks, filters) {
+    return arrayUtils.filterByMultipleConditions(tasks, filters);
+  }
 }
