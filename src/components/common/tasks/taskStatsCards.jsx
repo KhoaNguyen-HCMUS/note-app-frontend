@@ -18,7 +18,7 @@ const TaskStatsCards = ({ stats }) => {
       color: 'text-yellow-600',
     },
     {
-      title: t('tasks.stats.inProgress'),
+      title: t('tasks.stats.in-progress'),
       value: stats.inProgress,
       icon: FaSpinner,
       color: 'text-indigo-600',

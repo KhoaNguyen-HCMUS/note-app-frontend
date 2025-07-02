@@ -6,7 +6,7 @@ const TaskFilters = ({ statusFilter, priorityFilter, onStatusChange, onPriorityC
   const statusOptions = [
     { value: '', label: t('tasks.filters.allStatuses') },
     { value: 'pending', label: t('tasks.status.pending') },
-    { value: 'in-progress', label: t('tasks.status.inProgress') },
+    { value: 'in-progress', label: t('tasks.status.in-progress') },
     { value: 'completed', label: t('tasks.status.completed') },
     { value: 'cancelled', label: t('tasks.status.cancelled') },
   ];

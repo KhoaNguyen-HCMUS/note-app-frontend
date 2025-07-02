@@ -83,7 +83,7 @@ const TaskCard = ({ task, onUpdate, onEdit, onStatusUpdate }) => {
             )}`}
           >
             <option value='pending'>{t('tasks.status.pending')}</option>
-            <option value='in-progress'>{t('tasks.status.inProgress')}</option>
+            <option value='in-progress'>{t('tasks.status.in-progress')}</option>
             <option value='completed'>{t('tasks.status.completed')}</option>
             <option value='cancelled'>{t('tasks.status.cancelled')}</option>
           </select>
