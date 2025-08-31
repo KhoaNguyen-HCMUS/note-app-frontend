@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useSocket } from '../context/SocketContext';
+import { useSocket } from '../context/socketContext';
 import { getChatUsers, searchUsers, getMessages, sendMessage, markAsRead } from '../api/chatApi';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/authContext';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import ChatSidebar from '../components/common/chat/chatSidebar';
