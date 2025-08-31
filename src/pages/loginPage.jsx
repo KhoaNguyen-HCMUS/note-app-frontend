@@ -6,9 +6,9 @@ import axiosClient from '../api/axiosClient';
 import { toast } from 'react-toastify';
 import ThemeToggle from '../components/common/themeToggle.jsx';
 import { GoogleLogin } from '@react-oauth/google';
-import { useTheme } from '../context/themeContext';
 import LanguageSwitcher from '../components/common/languageSwitcher.jsx';
-import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/themeContext';
+import { useAuth } from '../context/authContext';
 
 export default function LoginPage() {
   const { t, i18n } = useTranslation();
