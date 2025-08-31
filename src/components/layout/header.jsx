@@ -5,17 +5,17 @@ import ThemeToggle from '../common/themeToggle.jsx';
 import ChatbotModal from '../common/chatBotModal.jsx';
 import LanguageSwitcher from '../common/languageSwitcher.jsx';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Header() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const userName = localStorage.getItem('username') || 'User';
+  const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showChatbot, setShowChatbot] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
+    logout();
     navigate('/login');
   };
 
@@ -68,7 +68,7 @@ export default function Header() {
 
             <div className='flex items-center gap-2 text-primary '>
               <FaUser size={20} />
-              <span>{userName}</span>
+              <span>{user?.username || 'User'}</span>
             </div>
 
             <button

@@ -31,6 +31,7 @@
     "notes": "Ghi chú",
     "tasks": "Công việc",
     "dashboard": "Bảng điều khiển",
+    "chat": "Trò chuyện",
     "profile": "Hồ sơ",
     "logout": "Đăng xuất"
   },
@@ -326,5 +327,29 @@
     "noRecentNotes": "Không có ghi chú gần đây",
     "noRecentTasks": "Không có công việc gần đây",
     "noUpcomingTasks": "Không có công việc sắp tới"
+  },
+
+  "chat": {
+    "title": "Tin nhắn",
+    "selectConversation": "Chọn cuộc trò chuyện",
+    "selectConversationDesc": "Chọn người dùng từ thanh bên để bắt đầu trò chuyện",
+    "typeMessage": "Nhập tin nhắn...",
+    "send": "Gửi",
+    "online": "Trực tuyến",
+    "offline": "Ngoại tuyến",
+    "typing": "Đang nhập...",
+    "noMessages": "Chưa có tin nhắn nào",
+    "searchPlaceholder": "Tìm kiếm theo email...",
+    "searching": "Đang tìm kiếm...",
+    "searchResults": "Kết quả tìm kiếm",
+    "noSearchResults": "Không tìm thấy người dùng",
+    "noConversations": "Chưa có cuộc trò chuyện nào",
+    "useSearchToStart": "Sử dụng thanh tìm kiếm ở trên để tìm và bắt đầu trò chuyện với người dùng",
+    "errors": {
+      "loadUsers": "Không thể tải danh sách người dùng chat",
+      "loadMessages": "Không thể tải tin nhắn",
+      "sendMessage": "Không thể gửi tin nhắn",
+      "searchUsers": "Không thể tìm kiếm người dùng"
+    }
   }
 }

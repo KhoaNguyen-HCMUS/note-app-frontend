@@ -31,6 +31,7 @@
     "notes": "Notes",
     "tasks": "Tasks",
     "dashboard": "Dashboard",
+    "chat": "Chat",
     "profile": "Profile",
     "logout": "Logout"
   },
@@ -327,5 +328,29 @@
     "noRecentNotes": "No recent notes",
     "noRecentTasks": "No recent tasks",
     "noUpcomingTasks": "No upcoming tasks"
+  },
+
+  "chat": {
+    "title": "Messages",
+    "selectConversation": "Select a conversation",
+    "selectConversationDesc": "Choose a user from the sidebar to start chatting",
+    "typeMessage": "Type a message...",
+    "send": "Send",
+    "online": "Online",
+    "offline": "Offline",
+    "typing": "Typing...",
+    "noMessages": "No messages yet",
+    "searchPlaceholder": "Search by email...",
+    "searching": "Searching...",
+    "searchResults": "Search Results",
+    "noSearchResults": "No users found",
+    "noConversations": "No conversations yet",
+    "useSearchToStart": "Use the search bar above to find and start chatting with users",
+    "errors": {
+      "loadUsers": "Failed to load chat users",
+      "loadMessages": "Failed to load messages",
+      "sendMessage": "Failed to send message",
+      "searchUsers": "Failed to search users"
+    }
   }
 }
