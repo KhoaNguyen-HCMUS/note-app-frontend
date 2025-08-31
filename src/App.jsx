@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/authContext';
-import { ThemeProvider } from './context/themeContext';
-import { SocketProvider } from './context/socketContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { toast, ToastContainer } from 'react-toastify';
+import { AuthProvider } from './context/authContext.jsx';
+import { ThemeProvider } from './context/themeContext.jsx';
+import { SocketProvider } from './context/socketContext.jsx';
 
 import LoginPage from './pages/loginPage';
 import RegisterPage from './pages/registerPage';
