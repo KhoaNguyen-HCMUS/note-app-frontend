@@ -8,10 +8,12 @@ import ThemeToggle from '../components/common/themeToggle.jsx';
 import { GoogleLogin } from '@react-oauth/google';
 import { useTheme } from '../context/themeContext';
 import LanguageSwitcher from '../components/common/languageSwitcher.jsx';
+import { useAuth } from '../context/AuthContext';
 
 export default function LoginPage() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const { theme } = useTheme();
@@ -22,8 +24,7 @@ export default function LoginPage() {
     try {
       const res = await axiosClient.post('/auth/login', form);
       console.log('Login response:', res);
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('username', res.data.user.username);
+      login(res.data.token, res.data.user.username, res.data.user.id);
       navigate('/dashboard');
     } catch (error) {
       if (error.response?.status === 400) {
@@ -43,8 +44,7 @@ export default function LoginPage() {
         credential: credentialResponse.credential,
       });
 
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('username', res.data.user.username);
+      login(res.data.token, res.data.user.username, res.data.user.id);
       console.log('Google login response:', res);
       navigate('/dashboard');
     } catch (error) {
