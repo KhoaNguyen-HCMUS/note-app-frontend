@@ -5,7 +5,7 @@ import ThemeToggle from '../common/themeToggle.jsx';
 import ChatbotModal from '../common/chatBotModal.jsx';
 import LanguageSwitcher from '../common/languageSwitcher.jsx';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/authContext';
 
 export default function Header() {
   const { t } = useTranslation();
