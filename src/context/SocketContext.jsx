@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-import { useAuth } from './AuthContext';
+import { useAuth } from './authContext';
 
 const SocketContext = createContext();
 
@@ -19,10 +19,10 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (token && user) {
-      const newSocket = io(import.meta.env.VITE_APP_API_URL , {
+      const newSocket = io(import.meta.env.VITE_APP_API_URL, {
         auth: {
-          token: token
-        }
+          token: token,
+        },
       });
 
       newSocket.on('connect', () => {
@@ -54,7 +54,7 @@ export const SocketProvider = ({ children }) => {
       socket.emit('private_message', {
         receiverId,
         content,
-        messageType
+        messageType,
       });
     }
   };
@@ -76,12 +76,8 @@ export const SocketProvider = ({ children }) => {
     isConnected,
     sendMessage,
     sendTyping,
-    sendStopTyping
+    sendStopTyping,
   };
 
-  return (
-    <SocketContext.Provider value={value}>
-      {children}
-    </SocketContext.Provider>
-  );
+  return <SocketContext.Provider value={value}>{children}</SocketContext.Provider>;
 };
