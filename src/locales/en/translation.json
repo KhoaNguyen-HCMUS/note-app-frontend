@@ -334,6 +334,7 @@
     "title": "Messages",
     "selectConversation": "Select a conversation",
     "selectConversationDesc": "Choose a user from the sidebar to start chatting",
+    "openConversations": "Open Conversations",
     "typeMessage": "Type a message...",
     "send": "Send",
     "online": "Online",

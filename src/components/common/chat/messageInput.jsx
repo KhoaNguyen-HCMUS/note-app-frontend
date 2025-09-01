@@ -13,7 +13,7 @@ const MessageInput = ({
 
   return (
     <div className="bg-white border-t border-gray-200 p-3">
-      <form onSubmit={onSendMessage} className="flex gap-2 mx-auto">
+      <form onSubmit={onSendMessage} className="flex gap-2">
         <input
           type="text"
           value={newMessage}
@@ -26,10 +26,10 @@ const MessageInput = ({
         <button
           type="submit"
           disabled={!newMessage.trim()}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 text-sm whitespace-nowrap"
+          className="px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[40px]"
         >
           <FiSend className="w-4 h-4" />
-          {t('chat.send')}
+          <span className="hidden sm:inline ml-1">{t('chat.send')}</span>
         </button>
       </form>
     </div>

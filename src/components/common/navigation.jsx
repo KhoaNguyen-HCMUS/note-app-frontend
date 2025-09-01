@@ -13,26 +13,26 @@ const Navigation = () => {
       path: '/dashboard',
       icon: FaHome,
       label: t('nav.dashboard'),
-      translationKey: 'nav.dashboard'
+      translationKey: 'nav.dashboard',
     },
     {
       path: '/notes',
       icon: FaStickyNote,
       label: t('nav.notes'),
-      translationKey: 'nav.notes'
+      translationKey: 'nav.notes',
     },
     {
       path: '/tasks',
       icon: FaTasks,
       label: t('nav.tasks'),
-      translationKey: 'nav.tasks'
+      translationKey: 'nav.tasks',
     },
     {
       path: '/chat',
       icon: FaComments,
       label: t('nav.chat'),
-      translationKey: 'nav.chat'
-    }
+      translationKey: 'nav.chat',
+    },
   ];
 
   const isActive = (path) => {
@@ -40,9 +40,9 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="bg-card-bg border-b border-border-light shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex space-x-8">
+    <nav className='bg-card-bg border-b border-border-light shadow-sm'>
+      <div className='container mx-auto px-4'>
+        <div className='flex justify-between items-center py-3'>
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -55,8 +55,8 @@ const Navigation = () => {
                     : 'text-text-body border-transparent hover:text-primary hover:border-gray-300'
                 }`}
               >
-                <Icon className="text-lg" />
-                <span className="hidden sm:inline">{item.label}</span>
+                <Icon className='text-lg' />
+                <span className='hidden sm:inline'>{item.label}</span>
               </button>
             );
           })}

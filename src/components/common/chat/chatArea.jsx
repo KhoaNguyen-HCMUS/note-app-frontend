@@ -17,15 +17,20 @@ const ChatArea = ({
   onMessageChange,
   onSendMessage,
   onTyping,
-  onStopTyping
+  onStopTyping,
+  onBackToSidebar,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex-1 flex flex-col min-h-0 h-full">
+    <div className='flex-1 flex flex-col min-h-0 h-full'>
       {selectedUser ? (
         <>
-          <ChatHeader selectedUser={selectedUser} isConnected={isConnected} />
+                    <ChatHeader 
+            selectedUser={selectedUser} 
+            isConnected={isConnected} 
+            onBackToSidebar={onBackToSidebar}
+          />
           <MessageList
             messages={messages}
             user={user}
@@ -43,11 +48,11 @@ const ChatArea = ({
           />
         </>
       ) : (
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <FiMessageCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">{t('chat.selectConversation')}</h3>
-            <p className="text-gray-500">{t('chat.selectConversationDesc')}</p>
+        <div className='flex-1 flex items-center justify-center'>
+          <div className='text-center'>
+            <FiMessageCircle className='w-16 h-16 text-gray-300 mx-auto mb-4' />
+            <h3 className='text-xl font-semibold text-gray-600 mb-2'>{t('chat.selectConversation')}</h3>
+            <p className='text-gray-500'>{t('chat.selectConversationDesc')}</p>
           </div>
         </div>
       )}

@@ -18,6 +18,7 @@ const ChatPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [showChatArea, setShowChatArea] = useState(false);
   const messagesEndRef = useRef(null);
   const { socket, isConnected, sendMessage: socketSendMessage, sendTyping, sendStopTyping } = useSocket();
   const { user } = useAuth();
@@ -29,6 +30,12 @@ const ChatPage = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages, scrollToBottom]);
+
+  useEffect(() => {
+    if (showChatArea && selectedUser) {
+      scrollToBottom();
+    }
+  }, [showChatArea, selectedUser, scrollToBottom]);
 
   useEffect(() => {
     const loadChatUsers = async () => {
@@ -59,7 +66,6 @@ const ChatPage = () => {
       try {
         setIsSearching(true);
         const results = await searchUsers(query);
-        // Đảm bảo results luôn là array
         setSearchResults(Array.isArray(results) ? results : []);
       } catch (error) {
         console.error('Error searching users:', error);
@@ -107,12 +113,12 @@ const ChatPage = () => {
 
     socket.on('new_message', (message) => {
       setMessages((prev) => {
-        // Đảm bảo prev luôn là array
         const currentMessages = Array.isArray(prev) ? prev : [];
         return [...currentMessages, message];
       });
       if (selectedUser && message.senderId === selectedUser.user._id) {
         markAsRead(message.senderId);
+        setTimeout(() => scrollToBottom(), 100);
       }
     });
 
@@ -143,7 +149,6 @@ const ChatPage = () => {
       try {
         const messageData = await sendMessage(selectedUser.user._id, newMessage);
         setMessages((prev) => {
-          // Đảm bảo prev luôn là array
           const currentMessages = Array.isArray(prev) ? prev : [];
           return [...currentMessages, messageData];
         });
@@ -151,6 +156,7 @@ const ChatPage = () => {
         socketSendMessage(selectedUser.user._id, newMessage);
 
         setNewMessage('');
+        setTimeout(() => scrollToBottom(), 100);
       } catch {
         toast.error(t('chat.errors.sendMessage'));
       }
@@ -177,9 +183,10 @@ const ChatPage = () => {
     });
   }, []);
 
-  // Handler functions
   const handleUserSelect = (chatUser) => {
     setSelectedUser(chatUser);
+    setShowChatArea(true);
+    setTimeout(() => scrollToBottom(), 100);
   };
 
   const handleSearchChange = (value) => {
@@ -190,41 +197,98 @@ const ChatPage = () => {
     setSelectedUser(chatUser);
     setSearchQuery('');
     setSearchResults([]);
+    setShowChatArea(true);
+    setTimeout(() => scrollToBottom(), 100);
   };
 
   const handleMessageChange = (value) => {
     setNewMessage(value);
   };
 
+  const handleBackToSidebar = () => {
+    setShowChatArea(false);
+  };
+
   return (
     <div className='flex h-[calc(80vh)] bg-gray-50'>
-      <ChatSidebar
-        chatUsers={chatUsers}
-        selectedUser={selectedUser}
-        searchQuery={searchQuery}
-        searchResults={searchResults}
-        isSearching={isSearching}
-        loading={loading}
-        onUserSelect={handleUserSelect}
-        onSearchChange={handleSearchChange}
-        onSearchUserSelect={handleSearchUserSelect}
-        formatTime={formatTime}
-        user={user}
-      />
-      <ChatArea
-        selectedUser={selectedUser}
-        messages={messages}
-        newMessage={newMessage}
-        typingUsers={typingUsers}
-        messagesEndRef={messagesEndRef}
-        isConnected={isConnected}
-        user={user}
-        formatTime={formatTime}
-        onMessageChange={handleMessageChange}
-        onSendMessage={handleSendMessage}
-        onTyping={handleTyping}
-        onStopTyping={handleStopTyping}
-      />
+      {/* Mobile Layout */}
+      <div className='lg:hidden flex w-full'>
+        {/* Mobile Sidebar - Always visible */}
+        <div className={`${showChatArea ? 'hidden' : 'block'} w-full flex-shrink-0`}>
+          <ChatSidebar
+            chatUsers={chatUsers}
+            selectedUser={selectedUser}
+            searchQuery={searchQuery}
+            searchResults={searchResults}
+            isSearching={isSearching}
+            loading={loading}
+            onUserSelect={handleUserSelect}
+            onSearchChange={handleSearchChange}
+            onSearchUserSelect={handleSearchUserSelect}
+            formatTime={formatTime}
+            user={user}
+          />
+        </div>
+
+        {/* Mobile Chat Area - Hidden by default, shown when user selected */}
+        {showChatArea && (
+          <div className='w-full flex-shrink-0'>
+            <ChatArea
+              selectedUser={selectedUser}
+              messages={messages}
+              newMessage={newMessage}
+              typingUsers={typingUsers}
+              messagesEndRef={messagesEndRef}
+              isConnected={isConnected}
+              user={user}
+              formatTime={formatTime}
+              onMessageChange={handleMessageChange}
+              onSendMessage={handleSendMessage}
+              onTyping={handleTyping}
+              onStopTyping={handleStopTyping}
+              onBackToSidebar={handleBackToSidebar}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Tablet & Desktop Layout */}
+      <div className='hidden lg:flex w-full'>
+        {/* Sidebar */}
+        <div className='w-80 xl:w-96 2xl:w-[420px] flex-shrink-0'>
+          <ChatSidebar
+            chatUsers={chatUsers}
+            selectedUser={selectedUser}
+            searchQuery={searchQuery}
+            searchResults={searchResults}
+            isSearching={isSearching}
+            loading={loading}
+            onUserSelect={handleUserSelect}
+            onSearchChange={handleSearchChange}
+            onSearchUserSelect={handleSearchUserSelect}
+            formatTime={formatTime}
+            user={user}
+          />
+        </div>
+
+        {/* Chat Area */}
+        <div className='flex-1 flex flex-col'>
+          <ChatArea
+            selectedUser={selectedUser}
+            messages={messages}
+            newMessage={newMessage}
+            typingUsers={typingUsers}
+            messagesEndRef={messagesEndRef}
+            isConnected={isConnected}
+            user={user}
+            formatTime={formatTime}
+            onMessageChange={handleMessageChange}
+            onSendMessage={handleSendMessage}
+            onTyping={handleTyping}
+            onStopTyping={handleStopTyping}
+          />
+        </div>
+      </div>
     </div>
   );
 };
